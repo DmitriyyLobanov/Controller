@@ -31,6 +31,8 @@ namespace ChinaTest.GUI_Forms
         {
             SelectCOMTextBox.TextChanged += SelectCOMTextBOX_Port;
             _controller.Connect.EnabledConnaction += ConnectStatus;
+
+            StageTypeComboBox.SelectedIndex = 0;
         }
 
         private void SelectCOMButton_Click(object sender, EventArgs e)
