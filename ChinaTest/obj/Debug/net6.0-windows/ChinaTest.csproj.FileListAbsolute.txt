@@ -87,3 +87,4 @@ C:\Users\User\Desktop\ControllerFork\ChinaTest\obj\Debug\net6.0-windows\refint\C
 C:\Users\User\Desktop\ControllerFork\ChinaTest\obj\Debug\net6.0-windows\ChinaTest.pdb
 C:\Users\User\Desktop\ControllerFork\ChinaTest\obj\Debug\net6.0-windows\ChinaTest.genruntimeconfig.cache
 C:\Users\User\Desktop\ControllerFork\ChinaTest\obj\Debug\net6.0-windows\ref\ChinaTest.dll
+C:\Users\User\Desktop\ControllerFork\ChinaTest\obj\Debug\net6.0-windows\ChinaTest.GUI_Forms.MainFormFull.resources

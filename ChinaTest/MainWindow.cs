@@ -27,7 +27,7 @@ namespace ChinaTest
         private void Main()
         {
             textBox1.TextChanged += textBox1_Port;
-            _controller.Connect.EnabledConaction += ConnectStaus;
+            _controller.Connect.EnabledConnaction += ConnectStaus;
 
             try
             {
@@ -67,7 +67,7 @@ namespace ChinaTest
             {
                 label2.Text = "Успешно";
                 label2.ForeColor = Color.Green;
-                _controller.Connect.EnabledConaction -= ConnectStaus;
+                _controller.Connect.EnabledConnaction -= ConnectStaus;
                 button1.Enabled = false;
             }
             else

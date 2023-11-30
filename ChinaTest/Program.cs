@@ -1,3 +1,5 @@
+using ChinaTest.GUI_Forms;
+
 namespace ChinaTest
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace ChinaTest
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainWindow());
+            Application.Run(new MainFormFull());
         }
     }
 }

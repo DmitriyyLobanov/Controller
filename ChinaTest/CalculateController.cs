@@ -1,7 +1,7 @@
 ﻿
 namespace ChinaTest
 {
-    internal class ColculateController
+    internal class CalculateController
     {
         private AxisModel? _axisModel;
 

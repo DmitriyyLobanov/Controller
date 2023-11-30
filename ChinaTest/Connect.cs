@@ -13,7 +13,7 @@ namespace ChinaTest
 
         public static SerialPort s_SerialPort;
 
-        public event Action<bool> EnabledConaction;
+        public event Action<bool> EnabledConnaction;
 
         public bool IsRead { get; private set; }                                   //Если чтение завершено, возвращает TRUE
         public bool IsBusy { get; private set; }                                  //Если контроллер занят
@@ -58,7 +58,7 @@ namespace ChinaTest
                     {
                         _isConnect = true;                         //Подключение успешно
                         _portNumber = port;                          //Номер серийного порта
-                        EnabledConaction?.Invoke(true);
+                        EnabledConnaction?.Invoke(true);
                     }
                     else
                     {
@@ -71,7 +71,7 @@ namespace ChinaTest
             }
             catch
             {
-                EnabledConaction?.Invoke(false);
+                EnabledConnaction?.Invoke(false);
             }
         }
 

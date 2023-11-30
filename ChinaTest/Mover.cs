@@ -3,7 +3,7 @@ namespace ChinaTest
 {
     internal class Mover
     {
-        private ColculateController _colculateController = new ColculateController();
+        private CalculateController _colculateController = new CalculateController();
         private Connect _connect;
         private AxisModel _axisModel;
 
