@@ -33,6 +33,7 @@
             SelectCOMButton = new Button();
             ConnectStatusLabel = new Label();
             StagesParametersPanel = new Panel();
+            SaveParametersButton = new Button();
             TravelRangeComboBox = new ComboBox();
             TransmissionRatioComboBox = new ComboBox();
             ScrewLeadComboBox = new ComboBox();
@@ -92,6 +93,7 @@
             // StagesParametersPanel
             // 
             StagesParametersPanel.BorderStyle = BorderStyle.FixedSingle;
+            StagesParametersPanel.Controls.Add(SaveParametersButton);
             StagesParametersPanel.Controls.Add(TravelRangeComboBox);
             StagesParametersPanel.Controls.Add(TransmissionRatioComboBox);
             StagesParametersPanel.Controls.Add(ScrewLeadComboBox);
@@ -114,11 +116,21 @@
             StagesParametersPanel.Size = new Size(285, 377);
             StagesParametersPanel.TabIndex = 4;
             // 
+            // SaveParametersButton
+            // 
+            SaveParametersButton.Location = new Point(3, 276);
+            SaveParametersButton.Name = "SaveParametersButton";
+            SaveParametersButton.Size = new Size(277, 23);
+            SaveParametersButton.TabIndex = 13;
+            SaveParametersButton.Text = "Сохранить параметры";
+            SaveParametersButton.UseVisualStyleBackColor = true;
+            SaveParametersButton.Click += SaveParametersButton_Click;
+            // 
             // TravelRangeComboBox
             // 
             TravelRangeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             TravelRangeComboBox.FormattingEnabled = true;
-            TravelRangeComboBox.Items.AddRange(new object[] { "20", "25", "50", "100", "250", "300", "400", "500", "600", "850", "1000" });
+            TravelRangeComboBox.Items.AddRange(new object[] { "20", "25", "35", "50", "100", "250", "300", "400", "500", "600", "850", "1000" });
             TravelRangeComboBox.Location = new Point(161, 237);
             TravelRangeComboBox.Name = "TravelRangeComboBox";
             TravelRangeComboBox.Size = new Size(109, 23);
@@ -328,5 +340,7 @@
         private ComboBox ScrewLeadComboBox;
         private ComboBox TransmissionRatioComboBox;
         private ComboBox TravelRangeComboBox;
+        private Button button2;
+        private Button SaveParametersButton;
     }
 }

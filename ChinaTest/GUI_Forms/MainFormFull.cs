@@ -79,5 +79,14 @@ namespace ChinaTest.GUI_Forms
             }
         }
 
+        private void SaveParametersButton_Click(object sender, EventArgs e)
+        {
+            //TODO: метод создания оси отмеченной в radioButton
+            string currentAxisName = null;
+            if (Set_X_RadioButton.Checked) currentAxisName = "X";
+            if (Set_Y_RadioButton.Checked) currentAxisName = "Y";
+            if (Set_Z_RadioButton.Checked) currentAxisName = "Z";
+            MessageBox.Show(currentAxisName);
+        }
     }
 }
