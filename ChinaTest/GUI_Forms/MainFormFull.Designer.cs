@@ -33,6 +33,12 @@
             SelectCOMButton = new Button();
             ConnectStatusLabel = new Label();
             StagesParametersPanel = new Panel();
+            TravelRangeComboBox = new ComboBox();
+            TransmissionRatioComboBox = new ComboBox();
+            ScrewLeadComboBox = new ComboBox();
+            SubdivisionComboBox = new ComboBox();
+            StepperAngleComboBox = new ComboBox();
+            RunningUnitComboBox = new ComboBox();
             StageTypeComboBox = new ComboBox();
             TravelRangeLabel = new Label();
             Set_Z_RadioButton = new RadioButton();
@@ -86,6 +92,12 @@
             // StagesParametersPanel
             // 
             StagesParametersPanel.BorderStyle = BorderStyle.FixedSingle;
+            StagesParametersPanel.Controls.Add(TravelRangeComboBox);
+            StagesParametersPanel.Controls.Add(TransmissionRatioComboBox);
+            StagesParametersPanel.Controls.Add(ScrewLeadComboBox);
+            StagesParametersPanel.Controls.Add(SubdivisionComboBox);
+            StagesParametersPanel.Controls.Add(StepperAngleComboBox);
+            StagesParametersPanel.Controls.Add(RunningUnitComboBox);
             StagesParametersPanel.Controls.Add(StageTypeComboBox);
             StagesParametersPanel.Controls.Add(TravelRangeLabel);
             StagesParametersPanel.Controls.Add(Set_Z_RadioButton);
@@ -102,12 +114,72 @@
             StagesParametersPanel.Size = new Size(285, 377);
             StagesParametersPanel.TabIndex = 4;
             // 
+            // TravelRangeComboBox
+            // 
+            TravelRangeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            TravelRangeComboBox.FormattingEnabled = true;
+            TravelRangeComboBox.Items.AddRange(new object[] { "20", "25", "50", "100", "250", "300", "400", "500", "600", "850", "1000" });
+            TravelRangeComboBox.Location = new Point(161, 237);
+            TravelRangeComboBox.Name = "TravelRangeComboBox";
+            TravelRangeComboBox.Size = new Size(109, 23);
+            TravelRangeComboBox.TabIndex = 12;
+            // 
+            // TransmissionRatioComboBox
+            // 
+            TransmissionRatioComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            TransmissionRatioComboBox.FormattingEnabled = true;
+            TransmissionRatioComboBox.Items.AddRange(new object[] { "72", "90", "180", "360", "252", "576", "6", "352", "400", "720" });
+            TransmissionRatioComboBox.Location = new Point(161, 208);
+            TransmissionRatioComboBox.Name = "TransmissionRatioComboBox";
+            TransmissionRatioComboBox.Size = new Size(109, 23);
+            TransmissionRatioComboBox.TabIndex = 11;
+            // 
+            // ScrewLeadComboBox
+            // 
+            ScrewLeadComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            ScrewLeadComboBox.FormattingEnabled = true;
+            ScrewLeadComboBox.Items.AddRange(new object[] { "0.5", "1", "1.5", "4", "5" });
+            ScrewLeadComboBox.Location = new Point(161, 179);
+            ScrewLeadComboBox.Name = "ScrewLeadComboBox";
+            ScrewLeadComboBox.Size = new Size(109, 23);
+            ScrewLeadComboBox.TabIndex = 10;
+            // 
+            // SubdivisionComboBox
+            // 
+            SubdivisionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            SubdivisionComboBox.FormattingEnabled = true;
+            SubdivisionComboBox.Items.AddRange(new object[] { "8", "4", "2", "1" });
+            SubdivisionComboBox.Location = new Point(161, 150);
+            SubdivisionComboBox.Name = "SubdivisionComboBox";
+            SubdivisionComboBox.Size = new Size(109, 23);
+            SubdivisionComboBox.TabIndex = 9;
+            // 
+            // StepperAngleComboBox
+            // 
+            StepperAngleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            StepperAngleComboBox.FormattingEnabled = true;
+            StepperAngleComboBox.Items.AddRange(new object[] { "1.8", "0.9" });
+            StepperAngleComboBox.Location = new Point(161, 121);
+            StepperAngleComboBox.Name = "StepperAngleComboBox";
+            StepperAngleComboBox.Size = new Size(109, 23);
+            StepperAngleComboBox.TabIndex = 8;
+            // 
+            // RunningUnitComboBox
+            // 
+            RunningUnitComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            RunningUnitComboBox.FormattingEnabled = true;
+            RunningUnitComboBox.Items.AddRange(new object[] { "mm", "Degree", "Step" });
+            RunningUnitComboBox.Location = new Point(161, 92);
+            RunningUnitComboBox.Name = "RunningUnitComboBox";
+            RunningUnitComboBox.Size = new Size(109, 23);
+            RunningUnitComboBox.TabIndex = 7;
+            // 
             // StageTypeComboBox
             // 
             StageTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             StageTypeComboBox.FormattingEnabled = true;
             StageTypeComboBox.Items.AddRange(new object[] { "None", "TranslationStage", "RotaryStage", "GoniometrStage" });
-            StageTypeComboBox.Location = new Point(161, 66);
+            StageTypeComboBox.Location = new Point(161, 63);
             StageTypeComboBox.Name = "StageTypeComboBox";
             StageTypeComboBox.Size = new Size(109, 23);
             StageTypeComboBox.TabIndex = 5;
@@ -115,7 +187,7 @@
             // TravelRangeLabel
             // 
             TravelRangeLabel.AutoSize = true;
-            TravelRangeLabel.Location = new Point(28, 246);
+            TravelRangeLabel.Location = new Point(14, 240);
             TravelRangeLabel.Name = "TravelRangeLabel";
             TravelRangeLabel.Size = new Size(141, 15);
             TravelRangeLabel.TabIndex = 6;
@@ -148,7 +220,7 @@
             // TransmissionRatioLabel
             // 
             TransmissionRatioLabel.AutoSize = true;
-            TransmissionRatioLabel.Location = new Point(27, 210);
+            TransmissionRatioLabel.Location = new Point(3, 211);
             TransmissionRatioLabel.Name = "TransmissionRatioLabel";
             TransmissionRatioLabel.Size = new Size(152, 15);
             TransmissionRatioLabel.TabIndex = 5;
@@ -171,7 +243,7 @@
             // StageTypeLabel
             // 
             StageTypeLabel.AutoSize = true;
-            StageTypeLabel.Location = new Point(27, 69);
+            StageTypeLabel.Location = new Point(70, 66);
             StageTypeLabel.Name = "StageTypeLabel";
             StageTypeLabel.Size = new Size(85, 15);
             StageTypeLabel.TabIndex = 0;
@@ -180,7 +252,7 @@
             // ScrewLeadLabel
             // 
             ScrewLeadLabel.AutoSize = true;
-            ScrewLeadLabel.Location = new Point(27, 182);
+            ScrewLeadLabel.Location = new Point(92, 182);
             ScrewLeadLabel.Name = "ScrewLeadLabel";
             ScrewLeadLabel.Size = new Size(63, 15);
             ScrewLeadLabel.TabIndex = 4;
@@ -189,7 +261,7 @@
             // RunningUnitLabel
             // 
             RunningUnitLabel.AutoSize = true;
-            RunningUnitLabel.Location = new Point(27, 101);
+            RunningUnitLabel.Location = new Point(39, 95);
             RunningUnitLabel.Name = "RunningUnitLabel";
             RunningUnitLabel.Size = new Size(116, 15);
             RunningUnitLabel.TabIndex = 1;
@@ -198,7 +270,7 @@
             // StepperAngleLabel
             // 
             StepperAngleLabel.AutoSize = true;
-            StepperAngleLabel.Location = new Point(27, 131);
+            StepperAngleLabel.Location = new Point(8, 124);
             StepperAngleLabel.Name = "StepperAngleLabel";
             StepperAngleLabel.Size = new Size(147, 15);
             StepperAngleLabel.TabIndex = 2;
@@ -207,7 +279,7 @@
             // SubdivisionLabel
             // 
             SubdivisionLabel.AutoSize = true;
-            SubdivisionLabel.Location = new Point(27, 156);
+            SubdivisionLabel.Location = new Point(70, 153);
             SubdivisionLabel.Name = "SubdivisionLabel";
             SubdivisionLabel.Size = new Size(85, 15);
             SubdivisionLabel.TabIndex = 3;
@@ -250,5 +322,11 @@
         private RadioButton Set_Z_RadioButton;
         private ComboBox StageTypeComboBox;
         private Label Set_Y_Label;
+        private ComboBox RunningUnitComboBox;
+        private ComboBox StepperAngleComboBox;
+        private ComboBox SubdivisionComboBox;
+        private ComboBox ScrewLeadComboBox;
+        private ComboBox TransmissionRatioComboBox;
+        private ComboBox TravelRangeComboBox;
     }
 }

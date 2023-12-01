@@ -33,6 +33,12 @@ namespace ChinaTest.GUI_Forms
             _controller.Connect.EnabledConnaction += ConnectStatus;
 
             StageTypeComboBox.SelectedIndex = 0;
+            RunningUnitComboBox.SelectedIndex = 0;
+            StepperAngleComboBox.SelectedIndex = 0;
+            SubdivisionComboBox.SelectedIndex = 0;
+            ScrewLeadComboBox.SelectedIndex = 1;
+            TransmissionRatioComboBox.SelectedIndex = 0;
+            TravelRangeComboBox.SelectedIndex = 3;
         }
 
         private void SelectCOMButton_Click(object sender, EventArgs e)
