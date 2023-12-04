@@ -190,7 +190,7 @@
             // 
             StageTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             StageTypeComboBox.FormattingEnabled = true;
-            StageTypeComboBox.Items.AddRange(new object[] { "None", "TranslationStage", "RotaryStage", "GoniometrStage" });
+            StageTypeComboBox.Items.AddRange(new object[] { "TranslationStage", "RotaryStage", "GoniometrStage" });
             StageTypeComboBox.Location = new Point(161, 63);
             StageTypeComboBox.Name = "StageTypeComboBox";
             StageTypeComboBox.Size = new Size(109, 23);

@@ -15,13 +15,20 @@ namespace ChinaTest.GUI_Forms
 {
     public partial class MainFormFull : Form
     {
+        private readonly string PathX = $"{Environment.CurrentDirectory}\\motorSettingsX.json";
+        private readonly string PathY = $"{Environment.CurrentDirectory}\\motorSettingsY.json";
+        private readonly string PathZ = $"{Environment.CurrentDirectory}\\motorSettingsZ.json";
 
-        private Controller _controller = new Controller();
+        private FileIOService _fileIOService;
+        private Controller _controller;
         private short _port;
 
 
         public MainFormFull()
         {
+            _controller = new Controller();
+            _fileIOService = new FileIOService();
+
             InitializeComponent();
             UpdateComponents();
         }
@@ -60,6 +67,7 @@ namespace ChinaTest.GUI_Forms
         }
         private void ConnectStatus(bool status)
         {
+            //TODO: Заменить текстовую отбивку на два изображения - зелёная лампочка и красная (До подключения - красная)
             if (status)
             {
                 ConnectStatusLabel.Visible = true;
@@ -81,12 +89,35 @@ namespace ChinaTest.GUI_Forms
 
         private void SaveParametersButton_Click(object sender, EventArgs e)
         {
-            //TODO: метод создания оси отмеченной в radioButton
-            string currentAxisName = null;
-            if (Set_X_RadioButton.Checked) currentAxisName = "X";
-            if (Set_Y_RadioButton.Checked) currentAxisName = "Y";
-            if (Set_Z_RadioButton.Checked) currentAxisName = "Z";
-            MessageBox.Show(currentAxisName);
+            //TODO: проверка на тип подвижки(включение/отключение поля передаточного отношения)
+
+            AxisModel axisModel = new AxisModel();
+            axisModel.StageType = StageTypeComboBox.SelectedItem.ToString();
+            axisModel.RuningUnit = RunningUnitComboBox.SelectedItem.ToString();
+            axisModel.StepperAngle = Double.Parse(StepperAngleComboBox.SelectedItem.ToString());
+            axisModel.Subdivision = Double.Parse(SubdivisionComboBox.SelectedItem.ToString());
+            axisModel.ScrewLead = Double.Parse(ScrewLeadComboBox.SelectedItem.ToString());
+            axisModel.TransmissonRatio = Double.Parse(TransmissionRatioComboBox.SelectedItem.ToString());
+            axisModel.TravelRange = Double.Parse(TravelRangeComboBox.SelectedItem.ToString());
+
+            if (Set_X_RadioButton.Checked)
+            {
+                axisModel.Name = "X";
+                _fileIOService.SaveData(axisModel, PathX);
+            }
+            if (Set_Y_RadioButton.Checked)
+            {
+                axisModel.Name = "Y";
+                _fileIOService.SaveData(axisModel, PathY);
+            }
+            if (Set_Z_RadioButton.Checked)
+            {
+                //Реализовать выставление None, чтобы не использовать одну из осей
+                throw new NotImplementedException();
+            }
+
+
+            MessageBox.Show(axisModel.ToString());
         }
     }
 }

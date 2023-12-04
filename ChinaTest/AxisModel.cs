@@ -72,5 +72,19 @@ namespace ChinaTest
             get { return _pulseEquivalent; }
             set { _pulseEquivalent = value; } 
         }
+
+        public override string? ToString()
+        {
+            return "Name: " + Name + Environment.NewLine
+                + "StageType: " + StageType + Environment.NewLine
+                + "RunningUnit: " + RuningUnit + Environment.NewLine
+                + "StepperUngle: " + StepperAngle + Environment.NewLine
+                + "Subdivision: " + Subdivision + Environment.NewLine
+                + "ScrewLead: " + ScrewLead + Environment.NewLine
+                + "TransmissionRatio: " + TransmissonRatio + Environment.NewLine
+                + "TravelRange: " + TravelRange + Environment.NewLine
+                + "Speed: " + Speed + Environment.NewLine
+                + "PulseEquivalent: " + PulseEquivalent;
+        }
     }
 }
