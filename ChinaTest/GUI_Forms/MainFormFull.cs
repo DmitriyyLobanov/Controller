@@ -102,22 +102,55 @@ namespace ChinaTest.GUI_Forms
 
             if (Set_X_RadioButton.Checked)
             {
-                axisModel.Name = "X";
-                _fileIOService.SaveData(axisModel, PathX);
+                if (File.Exists(PathX))
+                {
+                    DialogResult dialogResult = MessageBox.Show("Парметры оси Х уже заданы ранее, хотите перезаписать их?",
+                        "Внимание!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.DefaultDesktopOnly);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        axisModel.Name = "X";
+                        _fileIOService.SaveData(axisModel, PathX);
+                    }
+                }
+                else
+                {
+                    axisModel.Name = "X";
+                    _fileIOService.SaveData(axisModel, PathX);
+                }
+                
             }
             if (Set_Y_RadioButton.Checked)
             {
-                axisModel.Name = "Y";
-                _fileIOService.SaveData(axisModel, PathY);
+                if (File.Exists(PathY))
+                {
+                    DialogResult dialogResult = MessageBox.Show(
+                        "Парметры оси Y уже заданы ранее, хотите перезаписать их?",
+                        "Внимание!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.DefaultDesktopOnly);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        axisModel.Name = "Y";
+                        _fileIOService.SaveData(axisModel, PathY);
+                    }
+                }
+                else
+                {
+                    axisModel.Name = "Y";
+                    _fileIOService.SaveData(axisModel, PathY);
+                }
             }
             if (Set_Z_RadioButton.Checked)
             {
                 //Реализовать выставление None, чтобы не использовать одну из осей
                 throw new NotImplementedException();
             }
-
-
-            MessageBox.Show(axisModel.ToString());
         }
     }
 }
