@@ -67,23 +67,15 @@ namespace ChinaTest.GUI_Forms
         }
         private void ConnectStatus(bool status)
         {
-            //TODO: Заменить текстовую отбивку на два изображения - зелёная лампочка и красная (До подключения - красная)
+
             if (status)
             {
-                ConnectStatusLabel.Visible = true;
-                ConnectStatusLabel.ForeColor = Color.Green;
-
-                ConnectStatusLabel.Text = "Успешное подключение";
-
+                ConncetionFailedPictureBox.Visible = false;
                 _controller.Connect.EnabledConnaction -= ConnectStatus;
 
             }
             else
             {
-                ConnectStatusLabel.Visible = true;
-                ConnectStatusLabel.ForeColor = Color.Red;
-                ConnectStatusLabel.Text = "Нет подключения!";
-
             }
         }
 
@@ -121,7 +113,7 @@ namespace ChinaTest.GUI_Forms
                     axisModel.Name = "X";
                     _fileIOService.SaveData(axisModel, PathX);
                 }
-                
+
             }
             if (Set_Y_RadioButton.Checked)
             {

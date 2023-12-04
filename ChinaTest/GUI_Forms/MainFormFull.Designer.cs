@@ -31,7 +31,6 @@
             SelectCOMLabel = new Label();
             SelectCOMTextBox = new TextBox();
             SelectCOMButton = new Button();
-            ConnectStatusLabel = new Label();
             StagesParametersPanel = new Panel();
             SaveParametersButton = new Button();
             TravelRangeComboBox = new ComboBox();
@@ -51,7 +50,11 @@
             RunningUnitLabel = new Label();
             StepperAngleLabel = new Label();
             SubdivisionLabel = new Label();
+            ConnectionOkPictureBox = new PictureBox();
+            ConncetionFailedPictureBox = new PictureBox();
             StagesParametersPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ConnectionOkPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ConncetionFailedPictureBox).BeginInit();
             SuspendLayout();
             // 
             // SelectCOMLabel
@@ -79,16 +82,6 @@
             SelectCOMButton.Text = "COM connect";
             SelectCOMButton.UseVisualStyleBackColor = true;
             SelectCOMButton.Click += SelectCOMButton_Click;
-            // 
-            // ConnectStatusLabel
-            // 
-            ConnectStatusLabel.AutoSize = true;
-            ConnectStatusLabel.Location = new Point(317, 16);
-            ConnectStatusLabel.Name = "ConnectStatusLabel";
-            ConnectStatusLabel.Size = new Size(38, 15);
-            ConnectStatusLabel.TabIndex = 3;
-            ConnectStatusLabel.Text = "status";
-            ConnectStatusLabel.Visible = false;
             // 
             // StagesParametersPanel
             // 
@@ -297,13 +290,32 @@
             SubdivisionLabel.TabIndex = 3;
             SubdivisionLabel.Text = "Деление шага";
             // 
+            // ConnectionOkPictureBox
+            // 
+            ConnectionOkPictureBox.Image = Properties.Resources.green_ball1;
+            ConnectionOkPictureBox.Location = new Point(309, 12);
+            ConnectionOkPictureBox.Name = "ConnectionOkPictureBox";
+            ConnectionOkPictureBox.Size = new Size(33, 26);
+            ConnectionOkPictureBox.TabIndex = 5;
+            ConnectionOkPictureBox.TabStop = false;
+            // 
+            // ConncetionFailedPictureBox
+            // 
+            ConncetionFailedPictureBox.Image = Properties.Resources.red_ball;
+            ConncetionFailedPictureBox.Location = new Point(309, 12);
+            ConncetionFailedPictureBox.Name = "ConncetionFailedPictureBox";
+            ConncetionFailedPictureBox.Size = new Size(36, 24);
+            ConncetionFailedPictureBox.TabIndex = 6;
+            ConncetionFailedPictureBox.TabStop = false;
+            // 
             // MainFormFull
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(ConncetionFailedPictureBox);
+            Controls.Add(ConnectionOkPictureBox);
             Controls.Add(StagesParametersPanel);
-            Controls.Add(ConnectStatusLabel);
             Controls.Add(SelectCOMButton);
             Controls.Add(SelectCOMTextBox);
             Controls.Add(SelectCOMLabel);
@@ -311,6 +323,8 @@
             Text = "Главное окно";
             StagesParametersPanel.ResumeLayout(false);
             StagesParametersPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ConnectionOkPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ConncetionFailedPictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -320,7 +334,6 @@
         private Label SelectCOMLabel;
         private TextBox SelectCOMTextBox;
         private Button SelectCOMButton;
-        private Label ConnectStatusLabel;
         private Panel StagesParametersPanel;
         private Label ScrewLeadLabel;
         private Label SubdivisionLabel;
@@ -342,5 +355,7 @@
         private ComboBox TravelRangeComboBox;
         private Button button2;
         private Button SaveParametersButton;
+        private PictureBox ConnectionOkPictureBox;
+        private PictureBox ConncetionFailedPictureBox;
     }
 }
