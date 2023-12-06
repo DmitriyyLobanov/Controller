@@ -52,9 +52,19 @@
             SubdivisionLabel = new Label();
             ConnectionOkPictureBox = new PictureBox();
             ConncetionFailedPictureBox = new PictureBox();
+            MoveModesPanel = new Panel();
+            TargetModeComboBox = new ComboBox();
+            TargetModeAxisLabel = new Label();
+            RunTargetModeButton = new Button();
+            TargetModeTextBox = new TextBox();
+            TargetCoordLabel = new Label();
+            ContinousModeRadioButton = new RadioButton();
+            IncrementModeRadioButton = new RadioButton();
+            TargetModeRadioButton = new RadioButton();
             StagesParametersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ConnectionOkPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ConncetionFailedPictureBox).BeginInit();
+            MoveModesPanel.SuspendLayout();
             SuspendLayout();
             // 
             // SelectCOMLabel
@@ -308,11 +318,105 @@
             ConncetionFailedPictureBox.TabIndex = 6;
             ConncetionFailedPictureBox.TabStop = false;
             // 
+            // MoveModesPanel
+            // 
+            MoveModesPanel.BorderStyle = BorderStyle.FixedSingle;
+            MoveModesPanel.Controls.Add(TargetModeComboBox);
+            MoveModesPanel.Controls.Add(TargetModeAxisLabel);
+            MoveModesPanel.Controls.Add(RunTargetModeButton);
+            MoveModesPanel.Controls.Add(TargetModeTextBox);
+            MoveModesPanel.Controls.Add(TargetCoordLabel);
+            MoveModesPanel.Controls.Add(ContinousModeRadioButton);
+            MoveModesPanel.Controls.Add(IncrementModeRadioButton);
+            MoveModesPanel.Controls.Add(TargetModeRadioButton);
+            MoveModesPanel.Location = new Point(351, 15);
+            MoveModesPanel.Name = "MoveModesPanel";
+            MoveModesPanel.Size = new Size(398, 403);
+            MoveModesPanel.TabIndex = 7;
+            // 
+            // TargetModeComboBox
+            // 
+            TargetModeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            TargetModeComboBox.FormattingEnabled = true;
+            TargetModeComboBox.Items.AddRange(new object[] { "X", "Y", "Z" });
+            TargetModeComboBox.Location = new Point(139, 89);
+            TargetModeComboBox.Name = "TargetModeComboBox";
+            TargetModeComboBox.Size = new Size(100, 23);
+            TargetModeComboBox.TabIndex = 7;
+            // 
+            // TargetModeAxisLabel
+            // 
+            TargetModeAxisLabel.AutoSize = true;
+            TargetModeAxisLabel.Location = new Point(105, 92);
+            TargetModeAxisLabel.Name = "TargetModeAxisLabel";
+            TargetModeAxisLabel.Size = new Size(28, 15);
+            TargetModeAxisLabel.TabIndex = 6;
+            TargetModeAxisLabel.Text = "Ось";
+            // 
+            // RunTargetModeButton
+            // 
+            RunTargetModeButton.Location = new Point(245, 53);
+            RunTargetModeButton.Name = "RunTargetModeButton";
+            RunTargetModeButton.Size = new Size(75, 23);
+            RunTargetModeButton.TabIndex = 5;
+            RunTargetModeButton.Text = "Run";
+            RunTargetModeButton.UseVisualStyleBackColor = true;
+            // 
+            // TargetModeTextBox
+            // 
+            TargetModeTextBox.Location = new Point(139, 53);
+            TargetModeTextBox.Name = "TargetModeTextBox";
+            TargetModeTextBox.Size = new Size(100, 23);
+            TargetModeTextBox.TabIndex = 4;
+            // 
+            // TargetCoordLabel
+            // 
+            TargetCoordLabel.AutoSize = true;
+            TargetCoordLabel.Location = new Point(13, 56);
+            TargetCoordLabel.Name = "TargetCoordLabel";
+            TargetCoordLabel.Size = new Size(120, 15);
+            TargetCoordLabel.TabIndex = 3;
+            TargetCoordLabel.Text = "Целевая координата";
+            // 
+            // ContinousModeRadioButton
+            // 
+            ContinousModeRadioButton.AutoSize = true;
+            ContinousModeRadioButton.Location = new Point(58, 318);
+            ContinousModeRadioButton.Name = "ContinousModeRadioButton";
+            ContinousModeRadioButton.Size = new Size(114, 19);
+            ContinousModeRadioButton.TabIndex = 2;
+            ContinousModeRadioButton.TabStop = true;
+            ContinousModeRadioButton.Text = "Continous mode";
+            ContinousModeRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // IncrementModeRadioButton
+            // 
+            IncrementModeRadioButton.AutoSize = true;
+            IncrementModeRadioButton.Location = new Point(58, 262);
+            IncrementModeRadioButton.Name = "IncrementModeRadioButton";
+            IncrementModeRadioButton.Size = new Size(113, 19);
+            IncrementModeRadioButton.TabIndex = 1;
+            IncrementModeRadioButton.TabStop = true;
+            IncrementModeRadioButton.Text = "Increment mode";
+            IncrementModeRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // TargetModeRadioButton
+            // 
+            TargetModeRadioButton.AutoSize = true;
+            TargetModeRadioButton.Location = new Point(58, 24);
+            TargetModeRadioButton.Name = "TargetModeRadioButton";
+            TargetModeRadioButton.Size = new Size(91, 19);
+            TargetModeRadioButton.TabIndex = 0;
+            TargetModeRadioButton.TabStop = true;
+            TargetModeRadioButton.Text = "Target mode";
+            TargetModeRadioButton.UseVisualStyleBackColor = true;
+            // 
             // MainFormFull
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(874, 450);
+            Controls.Add(MoveModesPanel);
             Controls.Add(ConncetionFailedPictureBox);
             Controls.Add(ConnectionOkPictureBox);
             Controls.Add(StagesParametersPanel);
@@ -325,6 +429,8 @@
             StagesParametersPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ConnectionOkPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)ConncetionFailedPictureBox).EndInit();
+            MoveModesPanel.ResumeLayout(false);
+            MoveModesPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -357,5 +463,14 @@
         private Button SaveParametersButton;
         private PictureBox ConnectionOkPictureBox;
         private PictureBox ConncetionFailedPictureBox;
+        private Panel MoveModesPanel;
+        private RadioButton ContinousModeRadioButton;
+        private RadioButton IncrementModeRadioButton;
+        private RadioButton TargetModeRadioButton;
+        private TextBox TargetModeTextBox;
+        private Label TargetCoordLabel;
+        private Button RunTargetModeButton;
+        private Label TargetModeAxisLabel;
+        private ComboBox TargetModeComboBox;
     }
 }

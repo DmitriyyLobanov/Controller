@@ -46,6 +46,8 @@ namespace ChinaTest.GUI_Forms
             ScrewLeadComboBox.SelectedIndex = 1;
             TransmissionRatioComboBox.SelectedIndex = 0;
             TravelRangeComboBox.SelectedIndex = 3;
+
+            TargetModeComboBox.SelectedIndex = 0;
         }
 
         private void SelectCOMButton_Click(object sender, EventArgs e)
