@@ -53,6 +53,24 @@
             ConnectionOkPictureBox = new PictureBox();
             ConncetionFailedPictureBox = new PictureBox();
             MoveModesPanel = new Panel();
+            ContinousModeHomeButton = new Button();
+            ContinousModeComboBox = new ComboBox();
+            ContinousModeAxisLabel = new Label();
+            Z_backvardButton = new Button();
+            Z_forvardButton = new Button();
+            X_forvardButton = new Button();
+            X_backvardButton = new Button();
+            Y_backvardButton = new Button();
+            Y_forvardButton = new Button();
+            CancelZeroButton = new Button();
+            SetZeroButton = new Button();
+            HomeButton = new Button();
+            StopButton = new Button();
+            IncrementModeComboBox = new ComboBox();
+            IncrementModeAxisLabel = new Label();
+            RunIncrementModeButton = new Button();
+            IncrementModeTextBox = new TextBox();
+            IncrementModeLabel = new Label();
             TargetModeComboBox = new ComboBox();
             TargetModeAxisLabel = new Label();
             RunTargetModeButton = new Button();
@@ -61,10 +79,26 @@
             ContinousModeRadioButton = new RadioButton();
             IncrementModeRadioButton = new RadioButton();
             TargetModeRadioButton = new RadioButton();
+            CurrentCoordsPanel = new Panel();
+            CurrentUnitLabel_Z = new Label();
+            CurrentUnitLabel_Y = new Label();
+            CurrentUnitLabel_X = new Label();
+            CurrentZ_TextBox = new TextBox();
+            CurrentY_TextBox = new TextBox();
+            CurrentX_TextBox = new TextBox();
+            Current_Z_label = new Label();
+            Current_Y_label = new Label();
+            Current_X_label = new Label();
+            CurrenntCoordsLabel = new Label();
+            SetSpeedLabel = new Label();
+            SpeedLabel = new Label();
+            SetSpeedTextBox = new TextBox();
+            SetSpeedButton = new Button();
             StagesParametersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ConnectionOkPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ConncetionFailedPictureBox).BeginInit();
             MoveModesPanel.SuspendLayout();
+            CurrentCoordsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // SelectCOMLabel
@@ -116,7 +150,7 @@
             StagesParametersPanel.Controls.Add(SubdivisionLabel);
             StagesParametersPanel.Location = new Point(18, 41);
             StagesParametersPanel.Name = "StagesParametersPanel";
-            StagesParametersPanel.Size = new Size(285, 377);
+            StagesParametersPanel.Size = new Size(285, 315);
             StagesParametersPanel.TabIndex = 4;
             // 
             // SaveParametersButton
@@ -321,6 +355,24 @@
             // MoveModesPanel
             // 
             MoveModesPanel.BorderStyle = BorderStyle.FixedSingle;
+            MoveModesPanel.Controls.Add(ContinousModeHomeButton);
+            MoveModesPanel.Controls.Add(ContinousModeComboBox);
+            MoveModesPanel.Controls.Add(ContinousModeAxisLabel);
+            MoveModesPanel.Controls.Add(Z_backvardButton);
+            MoveModesPanel.Controls.Add(Z_forvardButton);
+            MoveModesPanel.Controls.Add(X_forvardButton);
+            MoveModesPanel.Controls.Add(X_backvardButton);
+            MoveModesPanel.Controls.Add(Y_backvardButton);
+            MoveModesPanel.Controls.Add(Y_forvardButton);
+            MoveModesPanel.Controls.Add(CancelZeroButton);
+            MoveModesPanel.Controls.Add(SetZeroButton);
+            MoveModesPanel.Controls.Add(HomeButton);
+            MoveModesPanel.Controls.Add(StopButton);
+            MoveModesPanel.Controls.Add(IncrementModeComboBox);
+            MoveModesPanel.Controls.Add(IncrementModeAxisLabel);
+            MoveModesPanel.Controls.Add(RunIncrementModeButton);
+            MoveModesPanel.Controls.Add(IncrementModeTextBox);
+            MoveModesPanel.Controls.Add(IncrementModeLabel);
             MoveModesPanel.Controls.Add(TargetModeComboBox);
             MoveModesPanel.Controls.Add(TargetModeAxisLabel);
             MoveModesPanel.Controls.Add(RunTargetModeButton);
@@ -331,8 +383,177 @@
             MoveModesPanel.Controls.Add(TargetModeRadioButton);
             MoveModesPanel.Location = new Point(351, 15);
             MoveModesPanel.Name = "MoveModesPanel";
-            MoveModesPanel.Size = new Size(398, 403);
+            MoveModesPanel.Size = new Size(459, 452);
             MoveModesPanel.TabIndex = 7;
+            // 
+            // ContinousModeHomeButton
+            // 
+            ContinousModeHomeButton.Location = new Point(336, 312);
+            ContinousModeHomeButton.Name = "ContinousModeHomeButton";
+            ContinousModeHomeButton.Size = new Size(100, 23);
+            ContinousModeHomeButton.TabIndex = 25;
+            ContinousModeHomeButton.Text = "HOME";
+            ContinousModeHomeButton.UseVisualStyleBackColor = true;
+            // 
+            // ContinousModeComboBox
+            // 
+            ContinousModeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            ContinousModeComboBox.FormattingEnabled = true;
+            ContinousModeComboBox.Items.AddRange(new object[] { "X", "Y", "Z" });
+            ContinousModeComboBox.Location = new Point(336, 278);
+            ContinousModeComboBox.Name = "ContinousModeComboBox";
+            ContinousModeComboBox.Size = new Size(100, 23);
+            ContinousModeComboBox.TabIndex = 24;
+            // 
+            // ContinousModeAxisLabel
+            // 
+            ContinousModeAxisLabel.AutoSize = true;
+            ContinousModeAxisLabel.Location = new Point(302, 281);
+            ContinousModeAxisLabel.Name = "ContinousModeAxisLabel";
+            ContinousModeAxisLabel.Size = new Size(28, 15);
+            ContinousModeAxisLabel.TabIndex = 23;
+            ContinousModeAxisLabel.Text = "Ось";
+            // 
+            // Z_backvardButton
+            // 
+            Z_backvardButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Z_backvardButton.Location = new Point(226, 388);
+            Z_backvardButton.Name = "Z_backvardButton";
+            Z_backvardButton.Size = new Size(48, 38);
+            Z_backvardButton.TabIndex = 22;
+            Z_backvardButton.Text = "Z-";
+            Z_backvardButton.UseVisualStyleBackColor = true;
+            // 
+            // Z_forvardButton
+            // 
+            Z_forvardButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Z_forvardButton.Location = new Point(226, 278);
+            Z_forvardButton.Name = "Z_forvardButton";
+            Z_forvardButton.Size = new Size(48, 38);
+            Z_forvardButton.TabIndex = 21;
+            Z_forvardButton.Text = "Z+";
+            Z_forvardButton.UseVisualStyleBackColor = true;
+            // 
+            // X_forvardButton
+            // 
+            X_forvardButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            X_forvardButton.Location = new Point(226, 331);
+            X_forvardButton.Name = "X_forvardButton";
+            X_forvardButton.Size = new Size(48, 38);
+            X_forvardButton.TabIndex = 20;
+            X_forvardButton.Text = "X+";
+            X_forvardButton.UseVisualStyleBackColor = true;
+            // 
+            // X_backvardButton
+            // 
+            X_backvardButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            X_backvardButton.Location = new Point(118, 331);
+            X_backvardButton.Name = "X_backvardButton";
+            X_backvardButton.Size = new Size(48, 38);
+            X_backvardButton.TabIndex = 19;
+            X_backvardButton.Text = "X-";
+            X_backvardButton.UseVisualStyleBackColor = true;
+            // 
+            // Y_backvardButton
+            // 
+            Y_backvardButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Y_backvardButton.Location = new Point(172, 360);
+            Y_backvardButton.Name = "Y_backvardButton";
+            Y_backvardButton.Size = new Size(48, 38);
+            Y_backvardButton.TabIndex = 18;
+            Y_backvardButton.Text = "Y-";
+            Y_backvardButton.UseVisualStyleBackColor = true;
+            // 
+            // Y_forvardButton
+            // 
+            Y_forvardButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Y_forvardButton.Location = new Point(172, 302);
+            Y_forvardButton.Name = "Y_forvardButton";
+            Y_forvardButton.Size = new Size(48, 38);
+            Y_forvardButton.TabIndex = 17;
+            Y_forvardButton.Text = "Y+";
+            Y_forvardButton.UseVisualStyleBackColor = true;
+            // 
+            // CancelZeroButton
+            // 
+            CancelZeroButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            CancelZeroButton.Location = new Point(336, 176);
+            CancelZeroButton.Name = "CancelZeroButton";
+            CancelZeroButton.Size = new Size(100, 23);
+            CancelZeroButton.TabIndex = 16;
+            CancelZeroButton.Text = "CANCEL ZERO";
+            CancelZeroButton.UseVisualStyleBackColor = true;
+            // 
+            // SetZeroButton
+            // 
+            SetZeroButton.Location = new Point(336, 147);
+            SetZeroButton.Name = "SetZeroButton";
+            SetZeroButton.Size = new Size(100, 23);
+            SetZeroButton.TabIndex = 15;
+            SetZeroButton.Text = "SET ZERO";
+            SetZeroButton.UseVisualStyleBackColor = true;
+            // 
+            // HomeButton
+            // 
+            HomeButton.Location = new Point(336, 118);
+            HomeButton.Name = "HomeButton";
+            HomeButton.Size = new Size(100, 23);
+            HomeButton.TabIndex = 14;
+            HomeButton.Text = "HOME";
+            HomeButton.UseVisualStyleBackColor = true;
+            // 
+            // StopButton
+            // 
+            StopButton.Location = new Point(336, 89);
+            StopButton.Name = "StopButton";
+            StopButton.Size = new Size(100, 23);
+            StopButton.TabIndex = 13;
+            StopButton.Text = "STOP";
+            StopButton.UseVisualStyleBackColor = true;
+            // 
+            // IncrementModeComboBox
+            // 
+            IncrementModeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            IncrementModeComboBox.FormattingEnabled = true;
+            IncrementModeComboBox.Items.AddRange(new object[] { "X", "Y", "Z" });
+            IncrementModeComboBox.Location = new Point(139, 202);
+            IncrementModeComboBox.Name = "IncrementModeComboBox";
+            IncrementModeComboBox.Size = new Size(100, 23);
+            IncrementModeComboBox.TabIndex = 12;
+            // 
+            // IncrementModeAxisLabel
+            // 
+            IncrementModeAxisLabel.AutoSize = true;
+            IncrementModeAxisLabel.Location = new Point(105, 205);
+            IncrementModeAxisLabel.Name = "IncrementModeAxisLabel";
+            IncrementModeAxisLabel.Size = new Size(28, 15);
+            IncrementModeAxisLabel.TabIndex = 11;
+            IncrementModeAxisLabel.Text = "Ось";
+            // 
+            // RunIncrementModeButton
+            // 
+            RunIncrementModeButton.Location = new Point(245, 164);
+            RunIncrementModeButton.Name = "RunIncrementModeButton";
+            RunIncrementModeButton.Size = new Size(75, 23);
+            RunIncrementModeButton.TabIndex = 10;
+            RunIncrementModeButton.Text = "Run";
+            RunIncrementModeButton.UseVisualStyleBackColor = true;
+            // 
+            // IncrementModeTextBox
+            // 
+            IncrementModeTextBox.Location = new Point(139, 164);
+            IncrementModeTextBox.Name = "IncrementModeTextBox";
+            IncrementModeTextBox.Size = new Size(100, 23);
+            IncrementModeTextBox.TabIndex = 9;
+            // 
+            // IncrementModeLabel
+            // 
+            IncrementModeLabel.AutoSize = true;
+            IncrementModeLabel.Location = new Point(41, 167);
+            IncrementModeLabel.Name = "IncrementModeLabel";
+            IncrementModeLabel.Size = new Size(92, 15);
+            IncrementModeLabel.TabIndex = 8;
+            IncrementModeLabel.Text = "Величина шага";
             // 
             // TargetModeComboBox
             // 
@@ -381,7 +602,7 @@
             // ContinousModeRadioButton
             // 
             ContinousModeRadioButton.AutoSize = true;
-            ContinousModeRadioButton.Location = new Point(58, 318);
+            ContinousModeRadioButton.Location = new Point(58, 248);
             ContinousModeRadioButton.Name = "ContinousModeRadioButton";
             ContinousModeRadioButton.Size = new Size(114, 19);
             ContinousModeRadioButton.TabIndex = 2;
@@ -392,7 +613,7 @@
             // IncrementModeRadioButton
             // 
             IncrementModeRadioButton.AutoSize = true;
-            IncrementModeRadioButton.Location = new Point(58, 262);
+            IncrementModeRadioButton.Location = new Point(58, 132);
             IncrementModeRadioButton.Name = "IncrementModeRadioButton";
             IncrementModeRadioButton.Size = new Size(113, 19);
             IncrementModeRadioButton.TabIndex = 1;
@@ -411,11 +632,165 @@
             TargetModeRadioButton.Text = "Target mode";
             TargetModeRadioButton.UseVisualStyleBackColor = true;
             // 
+            // CurrentCoordsPanel
+            // 
+            CurrentCoordsPanel.BorderStyle = BorderStyle.FixedSingle;
+            CurrentCoordsPanel.Controls.Add(CurrentUnitLabel_Z);
+            CurrentCoordsPanel.Controls.Add(CurrentUnitLabel_Y);
+            CurrentCoordsPanel.Controls.Add(CurrentUnitLabel_X);
+            CurrentCoordsPanel.Controls.Add(CurrentZ_TextBox);
+            CurrentCoordsPanel.Controls.Add(CurrentY_TextBox);
+            CurrentCoordsPanel.Controls.Add(CurrentX_TextBox);
+            CurrentCoordsPanel.Controls.Add(Current_Z_label);
+            CurrentCoordsPanel.Controls.Add(Current_Y_label);
+            CurrentCoordsPanel.Controls.Add(Current_X_label);
+            CurrentCoordsPanel.Controls.Add(CurrenntCoordsLabel);
+            CurrentCoordsPanel.Location = new Point(849, 15);
+            CurrentCoordsPanel.Name = "CurrentCoordsPanel";
+            CurrentCoordsPanel.Size = new Size(200, 183);
+            CurrentCoordsPanel.TabIndex = 8;
+            // 
+            // CurrentUnitLabel_Z
+            // 
+            CurrentUnitLabel_Z.AutoSize = true;
+            CurrentUnitLabel_Z.Location = new Point(115, 133);
+            CurrentUnitLabel_Z.Name = "CurrentUnitLabel_Z";
+            CurrentUnitLabel_Z.Size = new Size(45, 15);
+            CurrentUnitLabel_Z.TabIndex = 9;
+            CurrentUnitLabel_Z.Text = "ед/изм";
+            // 
+            // CurrentUnitLabel_Y
+            // 
+            CurrentUnitLabel_Y.AutoSize = true;
+            CurrentUnitLabel_Y.Location = new Point(115, 96);
+            CurrentUnitLabel_Y.Name = "CurrentUnitLabel_Y";
+            CurrentUnitLabel_Y.Size = new Size(45, 15);
+            CurrentUnitLabel_Y.TabIndex = 8;
+            CurrentUnitLabel_Y.Text = "ед/изм";
+            // 
+            // CurrentUnitLabel_X
+            // 
+            CurrentUnitLabel_X.AutoSize = true;
+            CurrentUnitLabel_X.Location = new Point(115, 57);
+            CurrentUnitLabel_X.Name = "CurrentUnitLabel_X";
+            CurrentUnitLabel_X.Size = new Size(45, 15);
+            CurrentUnitLabel_X.TabIndex = 7;
+            CurrentUnitLabel_X.Text = "ед/изм";
+            // 
+            // CurrentZ_TextBox
+            // 
+            CurrentZ_TextBox.Location = new Point(41, 128);
+            CurrentZ_TextBox.Name = "CurrentZ_TextBox";
+            CurrentZ_TextBox.ReadOnly = true;
+            CurrentZ_TextBox.Size = new Size(68, 23);
+            CurrentZ_TextBox.TabIndex = 6;
+            CurrentZ_TextBox.Text = "...";
+            CurrentZ_TextBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // CurrentY_TextBox
+            // 
+            CurrentY_TextBox.Location = new Point(41, 90);
+            CurrentY_TextBox.Name = "CurrentY_TextBox";
+            CurrentY_TextBox.ReadOnly = true;
+            CurrentY_TextBox.Size = new Size(68, 23);
+            CurrentY_TextBox.TabIndex = 5;
+            CurrentY_TextBox.Text = "...";
+            CurrentY_TextBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // CurrentX_TextBox
+            // 
+            CurrentX_TextBox.Location = new Point(41, 53);
+            CurrentX_TextBox.Name = "CurrentX_TextBox";
+            CurrentX_TextBox.ReadOnly = true;
+            CurrentX_TextBox.Size = new Size(68, 23);
+            CurrentX_TextBox.TabIndex = 4;
+            CurrentX_TextBox.Text = "...";
+            CurrentX_TextBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // Current_Z_label
+            // 
+            Current_Z_label.AutoSize = true;
+            Current_Z_label.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Current_Z_label.Location = new Point(11, 128);
+            Current_Z_label.Name = "Current_Z_label";
+            Current_Z_label.Size = new Size(24, 21);
+            Current_Z_label.TabIndex = 3;
+            Current_Z_label.Text = "Z:";
+            // 
+            // Current_Y_label
+            // 
+            Current_Y_label.AutoSize = true;
+            Current_Y_label.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Current_Y_label.Location = new Point(11, 91);
+            Current_Y_label.Name = "Current_Y_label";
+            Current_Y_label.Size = new Size(24, 21);
+            Current_Y_label.TabIndex = 2;
+            Current_Y_label.Text = "Y:";
+            // 
+            // Current_X_label
+            // 
+            Current_X_label.AutoSize = true;
+            Current_X_label.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Current_X_label.Location = new Point(11, 53);
+            Current_X_label.Name = "Current_X_label";
+            Current_X_label.Size = new Size(24, 21);
+            Current_X_label.TabIndex = 1;
+            Current_X_label.Text = "X:";
+            // 
+            // CurrenntCoordsLabel
+            // 
+            CurrenntCoordsLabel.AutoSize = true;
+            CurrenntCoordsLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            CurrenntCoordsLabel.Location = new Point(3, 1);
+            CurrenntCoordsLabel.Name = "CurrenntCoordsLabel";
+            CurrenntCoordsLabel.Size = new Size(184, 21);
+            CurrenntCoordsLabel.TabIndex = 0;
+            CurrenntCoordsLabel.Text = "Текущие координаты:";
+            // 
+            // SetSpeedLabel
+            // 
+            SetSpeedLabel.AutoSize = true;
+            SetSpeedLabel.Location = new Point(72, 370);
+            SetSpeedLabel.Name = "SetSpeedLabel";
+            SetSpeedLabel.Size = new Size(178, 15);
+            SetSpeedLabel.TabIndex = 9;
+            SetSpeedLabel.Text = "Задать скорость перемещений";
+            // 
+            // SpeedLabel
+            // 
+            SpeedLabel.AutoSize = true;
+            SpeedLabel.Location = new Point(50, 407);
+            SpeedLabel.Name = "SpeedLabel";
+            SpeedLabel.Size = new Size(62, 15);
+            SpeedLabel.TabIndex = 10;
+            SpeedLabel.Text = "Скорость:";
+            // 
+            // SetSpeedTextBox
+            // 
+            SetSpeedTextBox.Location = new Point(111, 404);
+            SetSpeedTextBox.Name = "SetSpeedTextBox";
+            SetSpeedTextBox.Size = new Size(85, 23);
+            SetSpeedTextBox.TabIndex = 11;
+            // 
+            // SetSpeedButton
+            // 
+            SetSpeedButton.Location = new Point(202, 404);
+            SetSpeedButton.Name = "SetSpeedButton";
+            SetSpeedButton.Size = new Size(70, 23);
+            SetSpeedButton.TabIndex = 12;
+            SetSpeedButton.Text = "Set";
+            SetSpeedButton.UseVisualStyleBackColor = true;
+            // 
             // MainFormFull
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(874, 450);
+            ClientSize = new Size(1080, 479);
+            Controls.Add(SetSpeedButton);
+            Controls.Add(SetSpeedTextBox);
+            Controls.Add(SpeedLabel);
+            Controls.Add(SetSpeedLabel);
+            Controls.Add(CurrentCoordsPanel);
             Controls.Add(MoveModesPanel);
             Controls.Add(ConncetionFailedPictureBox);
             Controls.Add(ConnectionOkPictureBox);
@@ -431,6 +806,8 @@
             ((System.ComponentModel.ISupportInitialize)ConncetionFailedPictureBox).EndInit();
             MoveModesPanel.ResumeLayout(false);
             MoveModesPanel.PerformLayout();
+            CurrentCoordsPanel.ResumeLayout(false);
+            CurrentCoordsPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -472,5 +849,38 @@
         private Button RunTargetModeButton;
         private Label TargetModeAxisLabel;
         private ComboBox TargetModeComboBox;
+        private Label IncrementModeLabel;
+        private TextBox IncrementModeTextBox;
+        private Button RunIncrementModeButton;
+        private ComboBox IncrementModeComboBox;
+        private Label IncrementModeAxisLabel;
+        private Button StopButton;
+        private Button CancelZeroButton;
+        private Button SetZeroButton;
+        private Button HomeButton;
+        private Button Y_forvardButton;
+        private Button Y_backvardButton;
+        private Button X_forvardButton;
+        private Button X_backvardButton;
+        private Button Z_forvardButton;
+        private Button Z_backvardButton;
+        private ComboBox ContinousModeComboBox;
+        private Label ContinousModeAxisLabel;
+        private Button ContinousModeHomeButton;
+        private Panel CurrentCoordsPanel;
+        private Label Current_Z_label;
+        private Label Current_Y_label;
+        private Label Current_X_label;
+        private Label CurrenntCoordsLabel;
+        private TextBox CurrentZ_TextBox;
+        private TextBox CurrentY_TextBox;
+        private TextBox CurrentX_TextBox;
+        private Label CurrentUnitLabel_X;
+        private Label CurrentUnitLabel_Z;
+        private Label CurrentUnitLabel_Y;
+        private Label SetSpeedLabel;
+        private Label SpeedLabel;
+        private TextBox SetSpeedTextBox;
+        private Button SetSpeedButton;
     }
 }
