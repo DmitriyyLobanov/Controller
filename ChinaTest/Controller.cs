@@ -19,7 +19,7 @@ namespace ChinaTest
             if (axis.Name == "X") AxisModelX = axis;
             else if (axis.Name == "Y") AxisModelY = axis;
             else if (axis.Name== "Z") AxisModelZ = axis;
-            else { MessageBox.Show("Неверное имя оси"); }
+            //else { MessageBox.Show("Неверное имя оси"); }
         }
     }
 }

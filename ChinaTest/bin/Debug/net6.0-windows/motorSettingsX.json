@@ -1,1 +1,1 @@
-{"Name":"X","StageType":"TranslationStage","RuningUnit":"mm","StepperAngle":1.8,"Subdivision":8.0,"ScrewLead":1.5,"TransmissonRatio":72.0,"TravelRange":50.0,"Speed":0.0,"PulseEquivalent":0.0}
+{"Name":"X","StageType":"TranslationStage","RuningUnit":"mm","StepperAngle":1.8,"Subdivision":8.0,"ScrewLead":1.0,"TransmissonRatio":72.0,"TravelRange":50.0,"Speed":0.0,"PulseEquivalent":0.0}

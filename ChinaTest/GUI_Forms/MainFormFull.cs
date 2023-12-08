@@ -23,6 +23,9 @@ namespace ChinaTest.GUI_Forms
         private Controller _controller;
         private short _port;
 
+        private AxisModel? _axisDataX;
+        private AxisModel? _axisDataY;
+        private AxisModel? _axisDataZ;
 
         public MainFormFull()
         {
@@ -38,6 +41,7 @@ namespace ChinaTest.GUI_Forms
         {
             SelectCOMTextBox.TextChanged += SelectCOMTextBOX_Port;
             _controller.Connect.EnabledConnaction += ConnectStatus;
+            DeserializedExistAxes();
 
             StageTypeComboBox.SelectedIndex = 0;
             RunningUnitComboBox.SelectedIndex = 0;
@@ -48,7 +52,32 @@ namespace ChinaTest.GUI_Forms
             TravelRangeComboBox.SelectedIndex = 3;
 
             TargetModeComboBox.SelectedIndex = 0;
+            IncrementModeComboBox.SelectedIndex = 0;
+            ContinousModeComboBox.SelectedIndex = 0;
         }
+
+        //TODO: Доделать метод, решить проблему с LoadMotor() - "создаёт null объекты AxisModel" - они мешают, как вариант в класс FileIOService добавить метод удаления файла
+        private void DeserializedExistAxes()
+        {
+            _axisDataX = _fileIOService.LoadMotor(PathX);
+
+            if (_axisDataX != null)
+            {
+                SetAxis(_axisDataX);
+                Set_X_RadioButton.ForeColor = Color.Green;
+
+            }
+
+            _axisDataY = _fileIOService.LoadMotor(PathY);
+            _axisDataZ = _fileIOService.LoadMotor(PathZ);
+
+        }
+
+        private void SetAxis(AxisModel axis)
+        {
+            _controller.SetAxisValue(axis);
+        }
+
 
         private void SelectCOMButton_Click(object sender, EventArgs e)
         {
