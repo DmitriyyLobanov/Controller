@@ -56,15 +56,17 @@ namespace ChinaTest.GUI_Forms
             ContinousModeComboBox.SelectedIndex = 0;
         }
 
-        
+        //TODO: Заполение комбобоксов десериализованными значениями.
         private void DeserializeExistAxes()
         {
+            string _deserializedAxes = "";
             _axisDataX = _fileIOService.LoadMotor(PathX);
 
             if (_axisDataX != null)
             {
                 SetAxis(_axisDataX);
                 Set_X_RadioButton.ForeColor = Color.Green;
+                _deserializedAxes = "X ";
 
             }
             _axisDataY = _fileIOService.LoadMotor(PathY);
@@ -72,12 +74,22 @@ namespace ChinaTest.GUI_Forms
             {
                 SetAxis(_axisDataY);
                 Set_Y_RadioButton.ForeColor = Color.Green;
+                _deserializedAxes += " Y";
             }
             _axisDataZ = _fileIOService.LoadMotor(PathZ);
             if (_axisDataZ != null)
             {
                 SetAxis(_axisDataZ);
                 Set_Z_RadioButton.ForeColor = Color.Green;
+                _deserializedAxes += " Z";
+            }
+            if (_deserializedAxes != "")
+            {
+                MessageBox.Show($"Параметры следующих осей успешно загружены: {_deserializedAxes}, подвижки готовы к работе.");
+            }
+            else
+            {
+                MessageBox.Show("Не обнаружены ранее сохраненные параметры осей, перед началом работы заполните параметры.");
             }
 
 
