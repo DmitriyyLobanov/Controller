@@ -29,9 +29,9 @@ namespace ChinaTest
 
             if(!fileExist)
             {
-                File.CreateText(path).Dispose();
+                //File.CreateText(path).Dispose();
                 MessageBox.Show("File is not found");
-                return new AxisModel();
+                return null;
             }
             using (var reader = File.OpenText(path))
             {
