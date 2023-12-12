@@ -27,10 +27,13 @@ namespace ChinaTest.GUI_Forms
         private AxisModel? _axisDataY;
         private AxisModel? _axisDataZ;
 
+        private List<AxisModel> usableAxis;
+
         public MainFormFull()
         {
             _controller = new Controller();
             _fileIOService = new FileIOService();
+            usableAxis = new List<AxisModel>();
 
             InitializeComponent();
             UpdateComponents();
@@ -41,7 +44,7 @@ namespace ChinaTest.GUI_Forms
         {
             SelectCOMTextBox.TextChanged += SelectCOMTextBOX_Port;
             _controller.Connect.EnabledConnaction += ConnectStatus;
-            DeserializeExistAxes();
+
 
             StageTypeComboBox.SelectedIndex = 0;
             RunningUnitComboBox.SelectedIndex = 0;
@@ -54,12 +57,19 @@ namespace ChinaTest.GUI_Forms
             TargetModeComboBox.SelectedIndex = 0;
             IncrementModeComboBox.SelectedIndex = 0;
             ContinousModeComboBox.SelectedIndex = 0;
+
+            DeserializeExistAxes();
         }
 
-        //TODO: Заполение комбобоксов десериализованными значениями.
+        /*
+         * TODO:Заполение комбобоксов десериализованными значениями.
+         * Как вариант передавать из DeserializeExistAxes() массив с объектами осей и другом методе заполнять
+         * комбо боксы.
+         */
         private void DeserializeExistAxes()
         {
             string _deserializedAxes = "";
+
             _axisDataX = _fileIOService.LoadMotor(PathX);
 
             if (_axisDataX != null)
@@ -67,6 +77,7 @@ namespace ChinaTest.GUI_Forms
                 SetAxis(_axisDataX);
                 Set_X_RadioButton.ForeColor = Color.Green;
                 _deserializedAxes = "X ";
+                usableAxis.Add(_axisDataX);
 
             }
             _axisDataY = _fileIOService.LoadMotor(PathY);
@@ -75,6 +86,7 @@ namespace ChinaTest.GUI_Forms
                 SetAxis(_axisDataY);
                 Set_Y_RadioButton.ForeColor = Color.Green;
                 _deserializedAxes += " Y";
+                usableAxis.Add(_axisDataY);
             }
             _axisDataZ = _fileIOService.LoadMotor(PathZ);
             if (_axisDataZ != null)
@@ -82,6 +94,7 @@ namespace ChinaTest.GUI_Forms
                 SetAxis(_axisDataZ);
                 Set_Z_RadioButton.ForeColor = Color.Green;
                 _deserializedAxes += " Z";
+                usableAxis.Add(_axisDataZ);
             }
             if (_deserializedAxes != "")
             {
@@ -96,6 +109,20 @@ namespace ChinaTest.GUI_Forms
 
         }
 
+        /*
+         * TODO: Реализовать заполнение комбобоксов десериализованными знач. Но по НЕСКОЛЬКИМ осям
+         * заполнение должно зависеть от активного радиобаттона.
+         */
+        private void FillComboBoxes(AxisModel axis)
+        {
+            StageTypeComboBox.SelectedItem = axis.StageType;
+            RunningUnitComboBox.SelectedItem = axis.RuningUnit;
+            StepperAngleComboBox.SelectedItem = axis.StepperAngle;
+            SubdivisionComboBox.SelectedItem = axis.Subdivision;
+            ScrewLeadComboBox.SelectedItem = axis.ScrewLead;
+            TransmissionRatioComboBox.SelectedItem = axis.TransmissonRatio;
+            TravelRangeComboBox.SelectedItem = axis.TravelRange;
+        }
         private void SetAxis(AxisModel axis)
         {
             _controller.SetAxisValue(axis);
