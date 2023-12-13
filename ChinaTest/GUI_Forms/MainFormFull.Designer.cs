@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             SelectCOMLabel = new Label();
             SelectCOMTextBox = new TextBox();
             SelectCOMButton = new Button();
@@ -94,6 +95,7 @@
             SpeedLabel = new Label();
             SetSpeedTextBox = new TextBox();
             SetSpeedButton = new Button();
+            ControllerTimer = new System.Windows.Forms.Timer(components);
             StagesParametersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ConnectionOkPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ConncetionFailedPictureBox).BeginInit();
@@ -609,7 +611,6 @@
             ContinousModeRadioButton.Name = "ContinousModeRadioButton";
             ContinousModeRadioButton.Size = new Size(114, 19);
             ContinousModeRadioButton.TabIndex = 2;
-            ContinousModeRadioButton.TabStop = true;
             ContinousModeRadioButton.Text = "Continous mode";
             ContinousModeRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -620,13 +621,13 @@
             IncrementModeRadioButton.Name = "IncrementModeRadioButton";
             IncrementModeRadioButton.Size = new Size(113, 19);
             IncrementModeRadioButton.TabIndex = 1;
-            IncrementModeRadioButton.TabStop = true;
             IncrementModeRadioButton.Text = "Increment mode";
             IncrementModeRadioButton.UseVisualStyleBackColor = true;
             // 
             // TargetModeRadioButton
             // 
             TargetModeRadioButton.AutoSize = true;
+            TargetModeRadioButton.Checked = true;
             TargetModeRadioButton.Location = new Point(58, 24);
             TargetModeRadioButton.Name = "TargetModeRadioButton";
             TargetModeRadioButton.Size = new Size(91, 19);
@@ -886,5 +887,6 @@
         private Label SpeedLabel;
         private TextBox SetSpeedTextBox;
         private Button SetSpeedButton;
+        private System.Windows.Forms.Timer ControllerTimer;
     }
 }

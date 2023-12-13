@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace ChinaTest.GUI_Forms
@@ -29,6 +30,12 @@ namespace ChinaTest.GUI_Forms
         private AxisModel? _axisDataY;
         private AxisModel? _axisDataZ;
         private double _maxSpeed = 255;
+
+        private Mover _mover;
+        private Mover _moverX;
+        private Mover _moverY;
+        private Mover _moverZ;
+        private double _point;
 
         private List<AxisModel> usableAxis;
 
@@ -66,11 +73,8 @@ namespace ChinaTest.GUI_Forms
             FirstInitialSet_X_Radiobutton();
         }
 
-        /*
-         * TODO:Заполение комбобоксов десериализованными значениями.
-         * Как вариант передавать из DeserializeExistAxes() массив с объектами осей и другом методе заполнять
-         * комбо боксы.
-         */
+
+        #region [СOM connect ans set parameters region]
         private void DeserializeExistAxes()
         {
             string _deserializedAxes = "";
@@ -204,12 +208,14 @@ namespace ChinaTest.GUI_Forms
                     {
                         axisModel.Name = "X";
                         _fileIOService.SaveData(axisModel, PathX);
+                        CurrentUnitLabel_X.Text = axisModel.RuningUnit.ToString();
                     }
                 }
                 else
                 {
                     axisModel.Name = "X";
                     _fileIOService.SaveData(axisModel, PathX);
+                    CurrentUnitLabel_X.Text = axisModel.RuningUnit.ToString();
                 }
 
             }
@@ -228,24 +234,27 @@ namespace ChinaTest.GUI_Forms
                     {
                         axisModel.Name = "Y";
                         _fileIOService.SaveData(axisModel, PathY);
+                        CurrentUnitLabel_Y.Text = axisModel.RuningUnit.ToString();
                     }
                 }
                 else
                 {
                     axisModel.Name = "Y";
                     _fileIOService.SaveData(axisModel, PathY);
+                    CurrentUnitLabel_Y.Text = axisModel.RuningUnit.ToString();
                 }
             }
             if (Set_Z_RadioButton.Checked)
             {
                 //Реализовать выставление None, чтобы не использовать одну из осей
                 throw new NotImplementedException();
+                //CurrentUnitLabel_Z.Text = axisModel.RuningUnit.ToString();
             }
         }
 
         private void Set_X_RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton? rb = sender as RadioButton;
+            System.Windows.Forms.RadioButton? rb = sender as System.Windows.Forms.RadioButton;
             if (rb.Checked && _axisDataX != null)
             {
                 FillComboBoxes(_axisDataX);
@@ -254,7 +263,7 @@ namespace ChinaTest.GUI_Forms
 
         private void Set_Y_RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton? rb = sender as RadioButton;
+            System.Windows.Forms.RadioButton? rb = sender as System.Windows.Forms.RadioButton;
             if (rb.Checked && _axisDataY != null)
             {
                 FillComboBoxes(_axisDataY);
@@ -263,7 +272,7 @@ namespace ChinaTest.GUI_Forms
 
         private void Set_Z_RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton? rb = sender as RadioButton;
+            System.Windows.Forms.RadioButton? rb = sender as System.Windows.Forms.RadioButton;
             if (rb.Checked && _axisDataZ != null)
             {
                 FillComboBoxes(_axisDataZ);
@@ -292,5 +301,42 @@ namespace ChinaTest.GUI_Forms
             }
 
         }
+        #endregion
+
+        #region[moving stages region]
+        private void SetTime(bool isTime)
+        {
+            ControllerTimer.Enabled = isTime;
+        }
+
+        private void SetInterval(int value)
+        {
+            ControllerTimer.Interval = value;
+        }
+        private void CheckAxis()
+        {
+            if (_mover != null)
+            {
+                if (TargetModeComboBox.SelectedItem.ToString() == "X")
+                    _mover = _moverX;
+                else if (TargetModeComboBox.SelectedItem.ToString() == "Y")
+                    _mover = _moverY;
+                else if (TargetModeComboBox.SelectedItem.ToString() == "Z")
+                    _mover = _moverZ;
+                return;
+            }
+
+            _moverX = new Mover(_controller.AxisModelX, _controller.Connect);
+            _moverY = new Mover(_controller.AxisModelY, _controller.Connect);
+            _moverZ = new Mover(_controller.AxisModelZ, _controller.Connect);
+            _mover = _moverX;
+
+            _mover.TimerEnabled += SetTime;
+            _mover.TimerItntervaled += SetInterval;
+
+        }
+        #endregion
+
     }
+
 }

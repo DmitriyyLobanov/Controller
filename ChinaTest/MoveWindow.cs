@@ -64,7 +64,7 @@ namespace ChinaTest
             _mover = _moverX;
 
             _mover.TimerEnabled += SetTime;
-            _mover.TimerItntervaled += SetInteval;
+            _mover.TimerItntervaled += SetInterval;
         }
 
         private void SetTime(bool isTime)
@@ -72,7 +72,7 @@ namespace ChinaTest
             timer1.Enabled = isTime;
         }
 
-        private void SetInteval(int value)
+        private void SetInterval(int value)
         {
             timer1.Interval = value;
         }

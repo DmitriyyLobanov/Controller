@@ -20,7 +20,7 @@ namespace ChinaTest
         public string StrReceiver { get; private set; }                            //Получение строки от контроллера
 
         /// <summary>
-        /// Производит подключение к текущему USB порут.
+        /// Производит подключение к текущему COM порту.
         /// </summary>
         /// <param name="port"> Числовое значение порта. </param>
         public void ConnectPort(short port)

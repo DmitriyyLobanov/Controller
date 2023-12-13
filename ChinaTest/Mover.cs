@@ -3,7 +3,7 @@ namespace ChinaTest
 {
     internal class Mover
     {
-        private CalculateController _colculateController = new CalculateController();
+        private CalculateController _calculateController = new CalculateController();
         private Connect _connect;
         private AxisModel _axisModel;
 
@@ -16,7 +16,7 @@ namespace ChinaTest
 
         public Mover(AxisModel axisValue, Connect connect)
         {
-            _colculateController.SetAxisVAlue(axisValue);
+            _calculateController.SetAxisVAlue(axisValue);
             _connect = connect;
             _axisModel = axisValue;
             _connect.SetMover(this);
@@ -36,11 +36,11 @@ namespace ChinaTest
 
             if (_axisModel.StageType == "TranslationStage")
             {
-                step = _colculateController.CountOfImpulseLiner(point);
+                step = _calculateController.CountOfImpulseLiner(point);
             }
             else if(_axisModel.StageType == "RotaryStage" || _axisModel.StageType == "GoniometrStage")
             {
-                step = Math.Round(_colculateController.CountOfImpulseAngle(point));
+                step = Math.Round(_calculateController.CountOfImpulseAngle(point));
             }
 
             string stepString;
@@ -75,9 +75,9 @@ namespace ChinaTest
             _connect.SendCommand(command + step + "\r");
 
             if (_axisModel.StageType == "TranslationStage")
-                TimerItntervaled?.Invoke(310 - Convert.ToInt32(_colculateController.ActualSpeedLiner(_axisModel.Speed)));
+                TimerItntervaled?.Invoke(310 - Convert.ToInt32(_calculateController.ActualSpeedLiner(_axisModel.Speed)));
             else if (_axisModel.StageType == "RotaryStage" || _axisModel.StageType == "GoniometrStage")
-                TimerItntervaled?.Invoke(310 - Convert.ToInt32(_colculateController.ActualSpeedAngle(_axisModel.Speed)));
+                TimerItntervaled?.Invoke(310 - Convert.ToInt32(_calculateController.ActualSpeedAngle(_axisModel.Speed)));
 
             TimerEnabled?.Invoke(true);
 
@@ -116,9 +116,9 @@ namespace ChinaTest
             _connect.Delay(500);
 
             if (_axisModel.StageType == "TranslationStage")
-                return Math.Round(_colculateController.ActualDisplacement(GetCurrentStep()), 3);
+                return Math.Round(_calculateController.ActualDisplacement(GetCurrentStep()), 3);
             else if (_axisModel.StageType == "RotaryStage" || _axisModel.StageType == "GoniometrStage")
-                return Math.Round(_colculateController.ActualRatio(GetCurrentStep()), 3);
+                return Math.Round(_calculateController.ActualRatio(GetCurrentStep()), 3);
             else 
                 return 0;
         }
