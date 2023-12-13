@@ -253,6 +253,7 @@
             Set_Z_RadioButton.TabIndex = 2;
             Set_Z_RadioButton.Text = "Z";
             Set_Z_RadioButton.UseVisualStyleBackColor = true;
+            Set_Z_RadioButton.CheckedChanged += Set_Z_RadioButton_CheckedChanged;
             // 
             // Set_Y_RadioButton
             // 
@@ -265,6 +266,7 @@
             Set_Y_RadioButton.TabIndex = 1;
             Set_Y_RadioButton.Text = "Y";
             Set_Y_RadioButton.UseVisualStyleBackColor = true;
+            Set_Y_RadioButton.CheckedChanged += Set_Y_RadioButton_CheckedChanged;
             // 
             // TransmissionRatioLabel
             // 
@@ -288,6 +290,7 @@
             Set_X_RadioButton.TabStop = true;
             Set_X_RadioButton.Text = "X";
             Set_X_RadioButton.UseVisualStyleBackColor = true;
+            Set_X_RadioButton.CheckedChanged += Set_X_RadioButton_CheckedChanged;
             // 
             // StageTypeLabel
             // 

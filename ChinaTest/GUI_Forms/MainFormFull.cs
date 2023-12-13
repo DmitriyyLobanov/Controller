@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,7 @@ namespace ChinaTest.GUI_Forms
             ContinousModeComboBox.SelectedIndex = 0;
 
             DeserializeExistAxes();
+            FirstInitialSet_X_Radiobutton();
         }
 
         /*
@@ -108,6 +110,13 @@ namespace ChinaTest.GUI_Forms
 
 
         }
+        private void FirstInitialSet_X_Radiobutton()
+        {
+            if (usableAxis.Contains(_axisDataX))
+            {
+                FillComboBoxes(_axisDataX);
+            }
+        }
 
         /*
          * TODO: Реализовать заполнение комбобоксов десериализованными знач. Но по НЕСКОЛЬКИМ осям
@@ -117,11 +126,31 @@ namespace ChinaTest.GUI_Forms
         {
             StageTypeComboBox.SelectedItem = axis.StageType;
             RunningUnitComboBox.SelectedItem = axis.RuningUnit;
-            StepperAngleComboBox.SelectedItem = axis.StepperAngle;
-            SubdivisionComboBox.SelectedItem = axis.Subdivision;
-            ScrewLeadComboBox.SelectedItem = axis.ScrewLead;
-            TransmissionRatioComboBox.SelectedItem = axis.TransmissonRatio;
-            TravelRangeComboBox.SelectedItem = axis.TravelRange;
+            StepperAngleComboBox.SelectedItem = axis.StepperAngle.ToString();
+            SubdivisionComboBox.SelectedItem = axis.Subdivision.ToString();
+            ScrewLeadComboBox.SelectedItem = axis.ScrewLead.ToString();
+            TransmissionRatioComboBox.SelectedItem = axis.TransmissonRatio.ToString();
+            TravelRangeComboBox.SelectedItem = axis.TravelRange.ToString();
+        }
+        private void DisableComboBoxes()
+        {
+            StageTypeComboBox.Enabled = false;
+            RunningUnitComboBox.Enabled = false;
+            StepperAngleComboBox.Enabled = false;
+            SubdivisionComboBox.Enabled = false;
+            ScrewLeadComboBox.Enabled = false;
+            TransmissionRatioComboBox.Enabled = false;
+            TravelRangeComboBox.Enabled = false;
+        }
+        private void EnableComboBoxes()
+        {
+            StageTypeComboBox.Enabled = true;
+            RunningUnitComboBox.Enabled = true;
+            StepperAngleComboBox.Enabled = true;
+            SubdivisionComboBox.Enabled = true;
+            ScrewLeadComboBox.Enabled = true;
+            TransmissionRatioComboBox.Enabled = true;
+            TravelRangeComboBox.Enabled = true;
         }
         private void SetAxis(AxisModel axis)
         {
@@ -223,6 +252,48 @@ namespace ChinaTest.GUI_Forms
             {
                 //Реализовать выставление None, чтобы не использовать одну из осей
                 throw new NotImplementedException();
+            }
+        }
+
+        private void Set_X_RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton? rb = sender as RadioButton;
+            if (rb.Checked && _axisDataX != null)
+            {
+                EnableComboBoxes();
+                FillComboBoxes(_axisDataX);
+            }
+            else
+            {
+                DisableComboBoxes();
+            }
+        }
+
+        private void Set_Y_RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton? rb = sender as RadioButton;
+            if (rb.Checked && _axisDataY != null)
+            {
+                EnableComboBoxes();
+                FillComboBoxes(_axisDataY);
+            }
+            else
+            {
+                DisableComboBoxes();
+            }
+        }
+
+        private void Set_Z_RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton? rb = sender as RadioButton;
+            if (rb.Checked && _axisDataZ != null)
+            {
+                EnableComboBoxes();
+                FillComboBoxes(_axisDataZ);
+            }
+            else
+            {
+                DisableComboBoxes();
             }
         }
     }
