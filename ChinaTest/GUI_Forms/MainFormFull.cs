@@ -22,17 +22,20 @@ namespace ChinaTest.GUI_Forms
 
         private FileIOService _fileIOService;
         private Controller _controller;
+        private SetterSpeed _setterSpeed;
         private short _port;
 
         private AxisModel? _axisDataX;
         private AxisModel? _axisDataY;
         private AxisModel? _axisDataZ;
+        private double _maxSpeed = 255;
 
         private List<AxisModel> usableAxis;
 
         public MainFormFull()
         {
             _controller = new Controller();
+            _setterSpeed = new SetterSpeed(_controller.Connect);
             _fileIOService = new FileIOService();
             usableAxis = new List<AxisModel>();
 
@@ -81,7 +84,7 @@ namespace ChinaTest.GUI_Forms
                 _deserializedAxes = "X ";
                 usableAxis.Add(_axisDataX);
 
-            } 
+            }
             _axisDataY = _fileIOService.LoadMotor(PathY);
             if (_axisDataY != null)
             {
@@ -89,7 +92,7 @@ namespace ChinaTest.GUI_Forms
                 Set_Y_RadioButton.ForeColor = Color.Green;
                 _deserializedAxes += " Y";
                 usableAxis.Add(_axisDataY);
-            } 
+            }
             _axisDataZ = _fileIOService.LoadMotor(PathZ);
             if (_axisDataZ != null)
             {
@@ -97,7 +100,7 @@ namespace ChinaTest.GUI_Forms
                 Set_Z_RadioButton.ForeColor = Color.Green;
                 _deserializedAxes += " Z";
                 usableAxis.Add(_axisDataZ);
-            } 
+            }
             if (_deserializedAxes != "")
             {
                 MessageBox.Show($"Параметры следующих осей успешно загружены: {_deserializedAxes}, подвижки готовы к работе.");
@@ -245,7 +248,7 @@ namespace ChinaTest.GUI_Forms
             }
             else
             {
-                
+
             }
         }
 
@@ -258,7 +261,7 @@ namespace ChinaTest.GUI_Forms
             }
             else
             {
-                
+
             }
         }
 
@@ -271,8 +274,31 @@ namespace ChinaTest.GUI_Forms
             }
             else
             {
-                
+
             }
+        }
+
+        private void SetSpeedButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                double value = double.Parse(SetSpeedTextBox.Text);
+
+                if (value < _maxSpeed)
+                {
+                    _setterSpeed.SetSpeed(value.ToString());
+                }
+                else
+                {
+                    _setterSpeed.SetSpeed(_maxSpeed.ToString());
+                    SetSpeedTextBox.Text = "255";
+                }
+            }
+            catch
+            {
+                SetSpeedTextBox.Text = "";
+            }
+
         }
     }
 }

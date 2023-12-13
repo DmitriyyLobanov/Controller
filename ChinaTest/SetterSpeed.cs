@@ -6,7 +6,7 @@
         private float _speed;
         private float _maxSpeed = 255;
 
-        public event Action<string>? ColculatedSpeed;
+        public event Action<string>? CalculatedSpeed;
 
         public SetterSpeed(Connect connect)
         {
@@ -50,7 +50,7 @@
             {
                 _speed = Convert.ToInt16(System.Text.RegularExpressions.Regex.Replace(_connect.StrReceiver, @"[^0-9]+", ""));
                 string text = "The speed is " + _speed.ToString();
-                ColculatedSpeed?.Invoke(text);
+                CalculatedSpeed?.Invoke(text);
             }
         }
     }

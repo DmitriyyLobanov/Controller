@@ -783,6 +783,7 @@
             SetSpeedButton.TabIndex = 12;
             SetSpeedButton.Text = "Set";
             SetSpeedButton.UseVisualStyleBackColor = true;
+            SetSpeedButton.Click += SetSpeedButton_Click;
             // 
             // MainFormFull
             // 
