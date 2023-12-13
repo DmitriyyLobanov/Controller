@@ -81,7 +81,7 @@ namespace ChinaTest.GUI_Forms
                 _deserializedAxes = "X ";
                 usableAxis.Add(_axisDataX);
 
-            }
+            } 
             _axisDataY = _fileIOService.LoadMotor(PathY);
             if (_axisDataY != null)
             {
@@ -89,7 +89,7 @@ namespace ChinaTest.GUI_Forms
                 Set_Y_RadioButton.ForeColor = Color.Green;
                 _deserializedAxes += " Y";
                 usableAxis.Add(_axisDataY);
-            }
+            } 
             _axisDataZ = _fileIOService.LoadMotor(PathZ);
             if (_axisDataZ != null)
             {
@@ -97,7 +97,7 @@ namespace ChinaTest.GUI_Forms
                 Set_Z_RadioButton.ForeColor = Color.Green;
                 _deserializedAxes += " Z";
                 usableAxis.Add(_axisDataZ);
-            }
+            } 
             if (_deserializedAxes != "")
             {
                 MessageBox.Show($"Параметры следующих осей успешно загружены: {_deserializedAxes}, подвижки готовы к работе.");
@@ -132,26 +132,7 @@ namespace ChinaTest.GUI_Forms
             TransmissionRatioComboBox.SelectedItem = axis.TransmissonRatio.ToString();
             TravelRangeComboBox.SelectedItem = axis.TravelRange.ToString();
         }
-        private void DisableComboBoxes()
-        {
-            StageTypeComboBox.Enabled = false;
-            RunningUnitComboBox.Enabled = false;
-            StepperAngleComboBox.Enabled = false;
-            SubdivisionComboBox.Enabled = false;
-            ScrewLeadComboBox.Enabled = false;
-            TransmissionRatioComboBox.Enabled = false;
-            TravelRangeComboBox.Enabled = false;
-        }
-        private void EnableComboBoxes()
-        {
-            StageTypeComboBox.Enabled = true;
-            RunningUnitComboBox.Enabled = true;
-            StepperAngleComboBox.Enabled = true;
-            SubdivisionComboBox.Enabled = true;
-            ScrewLeadComboBox.Enabled = true;
-            TransmissionRatioComboBox.Enabled = true;
-            TravelRangeComboBox.Enabled = true;
-        }
+
         private void SetAxis(AxisModel axis)
         {
             _controller.SetAxisValue(axis);
@@ -260,12 +241,11 @@ namespace ChinaTest.GUI_Forms
             RadioButton? rb = sender as RadioButton;
             if (rb.Checked && _axisDataX != null)
             {
-                EnableComboBoxes();
                 FillComboBoxes(_axisDataX);
             }
             else
             {
-                DisableComboBoxes();
+                
             }
         }
 
@@ -274,12 +254,11 @@ namespace ChinaTest.GUI_Forms
             RadioButton? rb = sender as RadioButton;
             if (rb.Checked && _axisDataY != null)
             {
-                EnableComboBoxes();
                 FillComboBoxes(_axisDataY);
             }
             else
             {
-                DisableComboBoxes();
+                
             }
         }
 
@@ -288,12 +267,11 @@ namespace ChinaTest.GUI_Forms
             RadioButton? rb = sender as RadioButton;
             if (rb.Checked && _axisDataZ != null)
             {
-                EnableComboBoxes();
                 FillComboBoxes(_axisDataZ);
             }
             else
             {
-                DisableComboBoxes();
+                
             }
         }
     }
