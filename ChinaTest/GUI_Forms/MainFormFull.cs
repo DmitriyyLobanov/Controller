@@ -84,6 +84,8 @@ namespace ChinaTest.GUI_Forms
                 _deserializedAxes = "X ";
                 usableAxis.Add(_axisDataX);
 
+                CurrentUnitLabel_X.Text = _axisDataX.RuningUnit.ToString();
+
             }
             _axisDataY = _fileIOService.LoadMotor(PathY);
             if (_axisDataY != null)
@@ -92,6 +94,8 @@ namespace ChinaTest.GUI_Forms
                 Set_Y_RadioButton.ForeColor = Color.Green;
                 _deserializedAxes += " Y";
                 usableAxis.Add(_axisDataY);
+
+                CurrentUnitLabel_Y.Text = _axisDataY.RuningUnit.ToString();
             }
             _axisDataZ = _fileIOService.LoadMotor(PathZ);
             if (_axisDataZ != null)
@@ -100,6 +104,8 @@ namespace ChinaTest.GUI_Forms
                 Set_Z_RadioButton.ForeColor = Color.Green;
                 _deserializedAxes += " Z";
                 usableAxis.Add(_axisDataZ);
+
+                CurrentUnitLabel_Z.Text = _axisDataZ.RuningUnit.ToString();
             }
             if (_deserializedAxes != "")
             {
@@ -120,6 +126,7 @@ namespace ChinaTest.GUI_Forms
                 FillComboBoxes(_axisDataX);
             }
         }
+
 
         /*
          * TODO: Реализовать заполнение комбобоксов десериализованными знач. Но по НЕСКОЛЬКИМ осям
@@ -167,9 +174,6 @@ namespace ChinaTest.GUI_Forms
                 ConncetionFailedPictureBox.Visible = false;
                 _controller.Connect.EnabledConnaction -= ConnectStatus;
 
-            }
-            else
-            {
             }
         }
 
@@ -246,10 +250,6 @@ namespace ChinaTest.GUI_Forms
             {
                 FillComboBoxes(_axisDataX);
             }
-            else
-            {
-
-            }
         }
 
         private void Set_Y_RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -259,10 +259,6 @@ namespace ChinaTest.GUI_Forms
             {
                 FillComboBoxes(_axisDataY);
             }
-            else
-            {
-
-            }
         }
 
         private void Set_Z_RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -271,10 +267,6 @@ namespace ChinaTest.GUI_Forms
             if (rb.Checked && _axisDataZ != null)
             {
                 FillComboBoxes(_axisDataZ);
-            }
-            else
-            {
-
             }
         }
 
