@@ -506,6 +506,7 @@
             HomeButton.TabIndex = 14;
             HomeButton.Text = "HOME";
             HomeButton.UseVisualStyleBackColor = true;
+            HomeButton.Click += HomeButton_Click;
             // 
             // StopButton
             // 

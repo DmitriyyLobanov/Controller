@@ -132,10 +132,6 @@ namespace ChinaTest.GUI_Forms
         }
 
 
-        /*
-         * TODO: Реализовать заполнение комбобоксов десериализованными знач. Но по НЕСКОЛЬКИМ осям
-         * заполнение должно зависеть от активного радиобаттона.
-         */
         private void FillComboBoxes(AxisModel axis)
         {
             StageTypeComboBox.SelectedItem = axis.StageType;
@@ -335,7 +331,26 @@ namespace ChinaTest.GUI_Forms
             _mover.TimerItntervaled += SetInterval;
 
         }
+        private void HomeButton_Click(object sender, EventArgs e)
+        {
+            CheckAxis();
+            if (_mover != null)
+            {
+                _mover.MoveToHome();
+                CheckAxisPosition(_mover);
+            }
+        }
+        private void CheckAxisPosition(Mover mover)
+        {
+            if (mover.AxisName == "X")
+                CurrentX_TextBox.Text = mover.GetPoint().ToString() + "  " + mover.RunningUnit;
+            else if (mover.AxisName == "Y")
+                CurrentY_TextBox.Text = mover.GetPoint().ToString() + "  " + mover.RunningUnit;
+            else if (mover.AxisName == "Z")
+                CurrentZ_TextBox.Text = mover.GetPoint().ToString() + "  " + mover.RunningUnit;
+        }
         #endregion
+
 
     }
 
