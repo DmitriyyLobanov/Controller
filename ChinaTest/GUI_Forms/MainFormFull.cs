@@ -343,11 +343,11 @@ namespace ChinaTest.GUI_Forms
         private void CheckAxisPosition(Mover mover)
         {
             if (mover.AxisName == "X")
-                CurrentX_TextBox.Text = mover.GetPoint().ToString() + "  " + mover.RunningUnit;
+                CurrentX_TextBox.Text = mover.GetPoint().ToString();
             else if (mover.AxisName == "Y")
-                CurrentY_TextBox.Text = mover.GetPoint().ToString() + "  " + mover.RunningUnit;
+                CurrentY_TextBox.Text = mover.GetPoint().ToString();
             else if (mover.AxisName == "Z")
-                CurrentZ_TextBox.Text = mover.GetPoint().ToString() + "  " + mover.RunningUnit;
+                CurrentZ_TextBox.Text = mover.GetPoint().ToString();
         }
         #endregion
 

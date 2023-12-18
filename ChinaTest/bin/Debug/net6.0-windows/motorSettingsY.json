@@ -1,1 +1,1 @@
-{"Name":"Y","StageType":"GoniometrStage","RuningUnit":"Degree","StepperAngle":0.9,"Subdivision":4.0,"ScrewLead":1.0,"TransmissonRatio":90.0,"TravelRange":1000.0,"Speed":0.0,"PulseEquivalent":0.0}
+{"Name":"Y","StageType":"TranslationStage","RuningUnit":"mm","StepperAngle":1.8,"Subdivision":8.0,"ScrewLead":1.0,"TransmissonRatio":72.0,"TravelRange":50.0,"Speed":0.0,"PulseEquivalent":0.0}
