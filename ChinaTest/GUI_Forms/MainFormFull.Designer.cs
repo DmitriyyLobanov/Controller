@@ -516,6 +516,7 @@
             StopButton.TabIndex = 13;
             StopButton.Text = "STOP";
             StopButton.UseVisualStyleBackColor = true;
+            StopButton.Click += StopButton_Click;
             // 
             // IncrementModeComboBox
             // 
@@ -808,6 +809,7 @@
             Controls.Add(SelectCOMLabel);
             Name = "MainFormFull";
             Text = "Главное окно";
+            FormClosed += MainFormFull_FormClosed;
             StagesParametersPanel.ResumeLayout(false);
             StagesParametersPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ConnectionOkPictureBox).EndInit();

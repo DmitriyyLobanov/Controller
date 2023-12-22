@@ -379,7 +379,16 @@ namespace ChinaTest.GUI_Forms
         {
             MoveAxis(Double.Parse(TargetModeTextBox.Text));
         }
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            //CheckAxis();
+            if (_mover != null)
+            {
+                _mover.StopMove();
 
+                CheckAxisPosition(_mover);
+            }
+        }
         private void MoveAxis(double point)
         {
             if (_mover != null)
@@ -395,6 +404,11 @@ namespace ChinaTest.GUI_Forms
 
 
 
+
+        private void MainFormFull_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 
 }
