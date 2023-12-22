@@ -588,6 +588,7 @@
             RunTargetModeButton.TabIndex = 5;
             RunTargetModeButton.Text = "Run";
             RunTargetModeButton.UseVisualStyleBackColor = true;
+            RunTargetModeButton.Click += RunTargetModeButton_Click;
             // 
             // TargetModeTextBox
             // 
@@ -595,6 +596,7 @@
             TargetModeTextBox.Name = "TargetModeTextBox";
             TargetModeTextBox.Size = new Size(100, 23);
             TargetModeTextBox.TabIndex = 4;
+            TargetModeTextBox.TextChanged += TargetModeTextBox_TextChanged;
             // 
             // TargetCoordLabel
             // 

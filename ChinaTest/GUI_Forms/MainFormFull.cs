@@ -29,6 +29,7 @@ namespace ChinaTest.GUI_Forms
         private AxisModel? _axisDataX;
         private AxisModel? _axisDataY;
         private AxisModel? _axisDataZ;
+        private double _defaultSpeed = 100;
         private double _maxSpeed = 255;
 
         private Mover _mover;
@@ -68,6 +69,8 @@ namespace ChinaTest.GUI_Forms
             TargetModeComboBox.SelectedIndex = 0;
             IncrementModeComboBox.SelectedIndex = 0;
             ContinousModeComboBox.SelectedIndex = 0;
+
+            SetSpeedTextBox.Text = _defaultSpeed.ToString();
 
             DeserializeExistAxes();
             FirstInitialSet_X_Radiobutton();
@@ -293,7 +296,7 @@ namespace ChinaTest.GUI_Forms
             }
             catch
             {
-                SetSpeedTextBox.Text = "";
+                SetSpeedTextBox.Text = _defaultSpeed.ToString();
             }
 
         }
@@ -349,7 +352,47 @@ namespace ChinaTest.GUI_Forms
             else if (mover.AxisName == "Z")
                 CurrentZ_TextBox.Text = mover.GetPoint().ToString();
         }
+
+        private void TargetModeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CheckAxis();
+            try
+            {
+                if (double.Parse(TargetModeTextBox.Text) < _mover.TravelRange)
+                {
+                    _point = double.Parse(TargetModeTextBox.Text);
+                }
+                else
+                {
+                    _point = _mover.TravelRange;
+                }
+
+                TargetModeTextBox.Text = _point.ToString();
+            }
+            catch
+            {
+                TargetModeTextBox.Text = "";
+            }
+        }
+
+        private void RunTargetModeButton_Click(object sender, EventArgs e)
+        {
+            MoveAxis(Double.Parse(TargetModeTextBox.Text));
+        }
+
+        private void MoveAxis(double point)
+        {
+            if (_mover != null)
+            {
+                _setterSpeed.SetSpeed(SetSpeedTextBox.Text);
+                _mover.SetToPoint(point);
+                CheckAxisPosition(_mover);
+            }
+        }
+
         #endregion
+
+
 
 
     }
