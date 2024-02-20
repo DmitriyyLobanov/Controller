@@ -433,13 +433,19 @@ namespace ChinaTest.GUI_Forms
                 IncrementModeTextBox.Text = "";
             }
         }
+
         private void RunIncrementModeButton_Click(object sender, EventArgs e)
         {
             CheckAxisIncrementMode();
             double currentCoord = 0;
-            double stepValue = Double.Parse(IncrementModeTextBox.Text) * 2;
-
-            MoveAxis(currentCoord+=stepValue);
+            double stepValue = Double.Parse(IncrementModeTextBox.Text);
+            if ((_mover.GetPoint() + stepValue) >= _mover.TravelRange)
+            {
+                MessageBox.Show("Первышено значение диапазона перемещения!");
+                IncrementModeTextBox.Text = "";
+                return;
+            }
+            MoveAxis(currentCoord += stepValue);
         }
         private void MoveAxis(double point)
         {

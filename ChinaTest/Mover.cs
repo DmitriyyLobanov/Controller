@@ -36,7 +36,7 @@ namespace ChinaTest
 
             if (_axisModel.StageType == "TranslationStage")
             {
-                step = _calculateController.CountOfImpulseLiner(point);
+                step = _calculateController.CountOfImpulseLiner(point) * 2;// Точка колхоза
             }
             else if(_axisModel.StageType == "RotaryStage" || _axisModel.StageType == "GoniometrStage")
             {
@@ -116,7 +116,7 @@ namespace ChinaTest
             _connect.Delay(500);
 
             if (_axisModel.StageType == "TranslationStage")
-                return Math.Round(_calculateController.ActualDisplacement(GetCurrentStep()), 3);
+                return Math.Round(_calculateController.ActualDisplacement(GetCurrentStep()), 3) / 2;//Точка колхоза
             else if (_axisModel.StageType == "RotaryStage" || _axisModel.StageType == "GoniometrStage")
                 return Math.Round(_calculateController.ActualRatio(GetCurrentStep()), 3);
             else 
