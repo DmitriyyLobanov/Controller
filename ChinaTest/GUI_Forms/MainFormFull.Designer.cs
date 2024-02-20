@@ -545,6 +545,7 @@
             RunIncrementModeButton.TabIndex = 10;
             RunIncrementModeButton.Text = "Run";
             RunIncrementModeButton.UseVisualStyleBackColor = true;
+            RunIncrementModeButton.Click += RunIncrementModeButton_Click;
             // 
             // IncrementModeTextBox
             // 
@@ -552,6 +553,7 @@
             IncrementModeTextBox.Name = "IncrementModeTextBox";
             IncrementModeTextBox.Size = new Size(100, 23);
             IncrementModeTextBox.TabIndex = 9;
+            IncrementModeTextBox.TextChanged += IncrementModeTextBox_TextChanged;
             // 
             // IncrementModeLabel
             // 

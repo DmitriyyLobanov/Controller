@@ -312,7 +312,7 @@ namespace ChinaTest.GUI_Forms
         {
             ControllerTimer.Interval = value;
         }
-        private void CheckAxis()
+        private void CheckAxisTargetMode()
         {
             if (_mover != null)
             {
@@ -334,9 +334,31 @@ namespace ChinaTest.GUI_Forms
             _mover.TimerItntervaled += SetInterval;
 
         }
+        private void CheckAxisIncrementMode()
+        {
+            if (_mover != null)
+            {
+                if (IncrementModeComboBox.SelectedItem.ToString() == "X")
+                    _mover = _moverX;
+                else if (IncrementModeComboBox.SelectedItem.ToString() == "Y")
+                    _mover = _moverY;
+                else if (IncrementModeComboBox.SelectedItem.ToString() == "Z")
+                    _mover = _moverZ;
+                return;
+            }
+
+            _moverX = new Mover(_controller.AxisModelX, _controller.Connect);
+            _moverY = new Mover(_controller.AxisModelY, _controller.Connect);
+            _moverZ = new Mover(_controller.AxisModelZ, _controller.Connect);
+            _mover = _moverX;
+
+            _mover.TimerEnabled += SetTime;
+            _mover.TimerItntervaled += SetInterval;
+
+        }
         private void HomeButton_Click(object sender, EventArgs e)
         {
-            CheckAxis();
+            CheckAxisTargetMode();
             if (_mover != null)
             {
                 _mover.MoveToHome();
@@ -355,7 +377,7 @@ namespace ChinaTest.GUI_Forms
 
         private void TargetModeTextBox_TextChanged(object sender, EventArgs e)
         {
-            CheckAxis();
+            CheckAxisTargetMode();
             try
             {
                 if (double.Parse(TargetModeTextBox.Text) < _mover.TravelRange)
@@ -377,6 +399,7 @@ namespace ChinaTest.GUI_Forms
 
         private void RunTargetModeButton_Click(object sender, EventArgs e)
         {
+            CheckAxisTargetMode();
             MoveAxis(Double.Parse(TargetModeTextBox.Text));
         }
         private void StopButton_Click(object sender, EventArgs e)
@@ -388,6 +411,33 @@ namespace ChinaTest.GUI_Forms
 
                 CheckAxisPosition(_mover);
             }
+        }
+        private void IncrementModeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CheckAxisIncrementMode();
+            try
+            {
+                if (double.Parse(IncrementModeTextBox.Text) < _mover.TravelRange)
+                {
+                    _point = double.Parse(IncrementModeTextBox.Text);
+                }
+                else
+                {
+                    _point = _mover.TravelRange;
+                }
+
+                IncrementModeTextBox.Text = _point.ToString();
+            }
+            catch
+            {
+                IncrementModeTextBox.Text = "";
+            }
+        }
+        private void RunIncrementModeButton_Click(object sender, EventArgs e)
+        {
+            double currentCoord = _mover.GetPoint();
+            //MessageBox.Show(currentCoord.ToString());
+            MoveAxis(Double.Parse(IncrementModeTextBox.Text) + currentCoord);
         }
         private void MoveAxis(double point)
         {
@@ -409,6 +459,8 @@ namespace ChinaTest.GUI_Forms
         {
             Environment.Exit(0);
         }
+
+
     }
 
 }
