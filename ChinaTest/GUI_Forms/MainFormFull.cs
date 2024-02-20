@@ -435,9 +435,11 @@ namespace ChinaTest.GUI_Forms
         }
         private void RunIncrementModeButton_Click(object sender, EventArgs e)
         {
-            double currentCoord = _mover.GetPoint();
-            //MessageBox.Show(currentCoord.ToString());
-            MoveAxis(Double.Parse(IncrementModeTextBox.Text) + currentCoord);
+            CheckAxisIncrementMode();
+            double currentCoord = 0;
+            double stepValue = Double.Parse(IncrementModeTextBox.Text) * 2;
+
+            MoveAxis(currentCoord+=stepValue);
         }
         private void MoveAxis(double point)
         {
