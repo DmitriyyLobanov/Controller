@@ -596,10 +596,12 @@
             // TargetModeTextBox
             // 
             TargetModeTextBox.Location = new Point(139, 53);
+            TargetModeTextBox.MaxLength = 5;
             TargetModeTextBox.Name = "TargetModeTextBox";
             TargetModeTextBox.Size = new Size(100, 23);
             TargetModeTextBox.TabIndex = 4;
             TargetModeTextBox.TextChanged += TargetModeTextBox_TextChanged;
+            TargetModeTextBox.KeyPress += TargetModeTextBox_KeyPress;
             // 
             // TargetCoordLabel
             // 

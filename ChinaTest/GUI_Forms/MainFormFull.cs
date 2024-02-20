@@ -377,28 +377,43 @@ namespace ChinaTest.GUI_Forms
 
         private void TargetModeTextBox_TextChanged(object sender, EventArgs e)
         {
-            CheckAxisTargetMode();
-            try
-            {
-                if (double.Parse(TargetModeTextBox.Text) < _mover.TravelRange)
-                {
-                    _point = double.Parse(TargetModeTextBox.Text);
-                }
-                else
-                {
-                    _point = _mover.TravelRange;
-                }
+            //CheckAxisTargetMode();
 
-                TargetModeTextBox.Text = _point.ToString();
-            }
-            catch
+            //try
+            //{
+            //    if (double.Parse(TargetModeTextBox.Text) < _mover.TravelRange)
+            //    {
+            //        _point = double.Parse(TargetModeTextBox.Text);
+            //    }
+            //    else
+            //    {
+            //        _point = _mover.TravelRange;
+            //    }
+
+            //    TargetModeTextBox.Text = _point.ToString();
+            //}
+            //catch
+            //{
+            //    TargetModeTextBox.Text = "";
+            //}
+        }
+        private void TargetModeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckAxisTargetMode();
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 44 && number != 46) //цифры, клавиша BackSpace. точка и запятая ASCII
             {
-                TargetModeTextBox.Text = "";
+                e.Handled = true;
             }
         }
-
         private void RunTargetModeButton_Click(object sender, EventArgs e)
         {
+            if ((Double.Parse(TargetModeTextBox.Text) + _mover.GetPoint())>= _mover.TravelRange)
+            {
+                MessageBox.Show("Превышено значение диапазона перемещения!");
+                TargetModeTextBox.Text = "";
+                return;
+            }
             CheckAxisTargetMode();
             MoveAxis(Double.Parse(TargetModeTextBox.Text));
         }
