@@ -554,6 +554,7 @@
             IncrementModeTextBox.Size = new Size(100, 23);
             IncrementModeTextBox.TabIndex = 9;
             IncrementModeTextBox.TextChanged += IncrementModeTextBox_TextChanged;
+            IncrementModeTextBox.KeyPress += IncrementModeTextBox_KeyPress;
             // 
             // IncrementModeLabel
             // 
@@ -621,6 +622,7 @@
             ContinousModeRadioButton.TabIndex = 2;
             ContinousModeRadioButton.Text = "Continous mode";
             ContinousModeRadioButton.UseVisualStyleBackColor = true;
+            ContinousModeRadioButton.CheckedChanged += ContinousModeRadioButton_CheckedChanged;
             // 
             // IncrementModeRadioButton
             // 
@@ -631,6 +633,7 @@
             IncrementModeRadioButton.TabIndex = 1;
             IncrementModeRadioButton.Text = "Increment mode";
             IncrementModeRadioButton.UseVisualStyleBackColor = true;
+            IncrementModeRadioButton.CheckedChanged += IncrementModeRadioButton_CheckedChanged;
             // 
             // TargetModeRadioButton
             // 
@@ -643,6 +646,7 @@
             TargetModeRadioButton.TabStop = true;
             TargetModeRadioButton.Text = "Target mode";
             TargetModeRadioButton.UseVisualStyleBackColor = true;
+            TargetModeRadioButton.CheckedChanged += TargetModeRadioButton_CheckedChanged;
             // 
             // CurrentCoordsPanel
             // 

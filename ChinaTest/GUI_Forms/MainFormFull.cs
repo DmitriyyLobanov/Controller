@@ -408,7 +408,7 @@ namespace ChinaTest.GUI_Forms
         }
         private void RunTargetModeButton_Click(object sender, EventArgs e)
         {
-            if ((Double.Parse(TargetModeTextBox.Text) + _mover.GetPoint())>= _mover.TravelRange)
+            if ((Double.Parse(TargetModeTextBox.Text) + _mover.GetPoint()) >= _mover.TravelRange)
             {
                 MessageBox.Show("Превышено значение диапазона перемещения!");
                 TargetModeTextBox.Text = "";
@@ -429,23 +429,32 @@ namespace ChinaTest.GUI_Forms
         }
         private void IncrementModeTextBox_TextChanged(object sender, EventArgs e)
         {
-            CheckAxisIncrementMode();
-            try
-            {
-                if (double.Parse(IncrementModeTextBox.Text) < _mover.TravelRange)
-                {
-                    _point = double.Parse(IncrementModeTextBox.Text);
-                }
-                else
-                {
-                    _point = _mover.TravelRange;
-                }
+            //CheckAxisIncrementMode();
+            //try
+            //{
+            //    if (double.Parse(IncrementModeTextBox.Text) < _mover.TravelRange)
+            //    {
+            //        _point = double.Parse(IncrementModeTextBox.Text);
+            //    }
+            //    else
+            //    {
+            //        _point = _mover.TravelRange;
+            //    }
 
-                IncrementModeTextBox.Text = _point.ToString();
-            }
-            catch
+            //    IncrementModeTextBox.Text = _point.ToString();
+            //}
+            //catch
+            //{
+            //    IncrementModeTextBox.Text = "";
+            //}
+        }
+        private void IncrementModeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckAxisIncrementMode();
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 44 && number != 46) //цифры, клавиша BackSpace. точка и запятая ASCII
             {
-                IncrementModeTextBox.Text = "";
+                e.Handled = true;
             }
         }
 
@@ -474,9 +483,69 @@ namespace ChinaTest.GUI_Forms
 
         #endregion
 
-
-
-
+        private void TargetModeRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            System.Windows.Forms.RadioButton? rb = sender as System.Windows.Forms.RadioButton;
+            if (rb.Checked && _axisDataX != null)
+            {
+                TargetModeTextBox.Enabled = true;
+                TargetModeComboBox.Enabled = true;
+                RunTargetModeButton.Enabled = true;
+                IncrementModeTextBox.Enabled = false;
+                RunIncrementModeButton.Enabled = false;
+                IncrementModeComboBox.Enabled = false;
+                ContinousModeComboBox.Enabled = false;
+                ContinousModeHomeButton.Enabled = false;
+                X_forvardButton.Enabled = false;
+                X_backvardButton.Enabled = false;
+                Y_forvardButton.Enabled = false;
+                Y_backvardButton.Enabled = false;
+                Z_forvardButton.Enabled = false;
+                Z_backvardButton.Enabled = false;
+            }
+        }
+        private void IncrementModeRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            System.Windows.Forms.RadioButton? rb = sender as System.Windows.Forms.RadioButton;
+            if (rb.Checked && _axisDataX != null)
+            {
+                TargetModeTextBox.Enabled = false;
+                TargetModeComboBox.Enabled = false;
+                RunTargetModeButton.Enabled = false;
+                IncrementModeTextBox.Enabled = true;
+                RunIncrementModeButton.Enabled = true;
+                IncrementModeComboBox.Enabled = true;
+                ContinousModeComboBox.Enabled = false;
+                ContinousModeHomeButton.Enabled = false;
+                X_forvardButton.Enabled = false;
+                X_backvardButton.Enabled = false;
+                Y_forvardButton.Enabled = false;
+                Y_backvardButton.Enabled = false;
+                Z_forvardButton.Enabled = false;
+                Z_backvardButton.Enabled = false;
+            }
+        }
+        private void ContinousModeRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            System.Windows.Forms.RadioButton? rb = sender as System.Windows.Forms.RadioButton;
+            if (rb.Checked && _axisDataX != null)
+            {
+                TargetModeTextBox.Enabled = false;
+                TargetModeComboBox.Enabled = false;
+                RunTargetModeButton.Enabled = false;
+                IncrementModeTextBox.Enabled = false;
+                RunIncrementModeButton.Enabled = false;
+                IncrementModeComboBox.Enabled = false;
+                ContinousModeComboBox.Enabled = true;
+                ContinousModeHomeButton.Enabled = true;
+                X_forvardButton.Enabled = true;
+                X_backvardButton.Enabled = true;
+                Y_forvardButton.Enabled = true;
+                Y_backvardButton.Enabled = true;
+                Z_forvardButton.Enabled = true;
+                Z_backvardButton.Enabled = true;
+            }
+        }
 
         private void MainFormFull_FormClosed(object sender, FormClosedEventArgs e)
         {
