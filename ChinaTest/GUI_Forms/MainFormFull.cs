@@ -49,6 +49,13 @@ namespace ChinaTest.GUI_Forms
 
             InitializeComponent();
             UpdateComponents();
+            _moverX = new Mover(_controller.AxisModelX, _controller.Connect);
+            _moverY = new Mover(_controller.AxisModelY, _controller.Connect);
+            _moverZ = new Mover(_controller.AxisModelZ, _controller.Connect);
+            _mover = _moverX;
+
+            _mover.TimerEnabled += SetTime;
+            _mover.TimerItntervaled += SetInterval;
         }
 
 
@@ -667,8 +674,6 @@ namespace ChinaTest.GUI_Forms
         {
             Environment.Exit(0);
         }
-
-
     }
 
 }
