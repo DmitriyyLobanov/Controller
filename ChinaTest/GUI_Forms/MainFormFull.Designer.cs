@@ -399,6 +399,7 @@
             ContinousModeHomeButton.TabIndex = 25;
             ContinousModeHomeButton.Text = "HOME";
             ContinousModeHomeButton.UseVisualStyleBackColor = true;
+            ContinousModeHomeButton.Click += ContinousModeHomeButton_Click;
             // 
             // ContinousModeComboBox
             // 
@@ -448,6 +449,8 @@
             X_forvardButton.TabIndex = 20;
             X_forvardButton.Text = "X+";
             X_forvardButton.UseVisualStyleBackColor = true;
+            X_forvardButton.KeyDown += X_forvardButton_KeyDown;
+            X_forvardButton.KeyUp += X_forvardButton_KeyUp;
             // 
             // X_backvardButton
             // 
@@ -623,6 +626,8 @@
             ContinousModeRadioButton.Text = "Continous mode";
             ContinousModeRadioButton.UseVisualStyleBackColor = true;
             ContinousModeRadioButton.CheckedChanged += ContinousModeRadioButton_CheckedChanged;
+            ContinousModeRadioButton.KeyDown += ContinousModeRadioButton_KeyDown;
+            ContinousModeRadioButton.KeyUp += ContinousModeRadioButton_KeyUp;
             // 
             // IncrementModeRadioButton
             // 
@@ -638,12 +643,10 @@
             // TargetModeRadioButton
             // 
             TargetModeRadioButton.AutoSize = true;
-            TargetModeRadioButton.Checked = true;
             TargetModeRadioButton.Location = new Point(58, 24);
             TargetModeRadioButton.Name = "TargetModeRadioButton";
             TargetModeRadioButton.Size = new Size(91, 19);
             TargetModeRadioButton.TabIndex = 0;
-            TargetModeRadioButton.TabStop = true;
             TargetModeRadioButton.Text = "Target mode";
             TargetModeRadioButton.UseVisualStyleBackColor = true;
             TargetModeRadioButton.CheckedChanged += TargetModeRadioButton_CheckedChanged;

@@ -6,7 +6,7 @@ namespace ChinaTest
     {
         private bool _isSet;                                   //Если отправленная команда является заданной командой или командой запроса. TRUE - команда установлена
         private bool _isStopCommand;                            //Остановка ожидания
-        private bool _isConnect;                                //Статус соединения
+        public bool _isConnect { get; private set; }                                //Статус соединения
         private short _portNumber;                              //Номер серийного порта
 
         private Mover _mover;

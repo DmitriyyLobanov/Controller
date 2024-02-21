@@ -72,8 +72,11 @@ namespace ChinaTest.GUI_Forms
 
             SetSpeedTextBox.Text = _defaultSpeed.ToString();
 
+            MoveModesPanel.Enabled = false;
+
             DeserializeExistAxes();
             FirstInitialSet_X_Radiobutton();
+
         }
 
 
@@ -155,6 +158,10 @@ namespace ChinaTest.GUI_Forms
         private void SelectCOMButton_Click(object sender, EventArgs e)
         {
             _controller.Connect.ConnectPort(_port);
+            if (_controller.Connect._isConnect)
+            {
+                MoveModesPanel.Enabled = true;
+            }
         }
 
         private void SelectCOMTextBOX_Port(object sender, EventArgs e)
@@ -546,6 +553,115 @@ namespace ChinaTest.GUI_Forms
                 Z_backvardButton.Enabled = true;
             }
         }
+
+
+        #region[ContinousMode region]
+        private void CheckAxisContinousMode()
+        {
+            if (_mover != null)
+            {
+                if (ContinousModeComboBox.SelectedItem.ToString() == "X")
+                    _mover = _moverX;
+                else if (ContinousModeComboBox.SelectedItem.ToString() == "Y")
+                    _mover = _moverY;
+                else if (ContinousModeComboBox.SelectedItem.ToString() == "Z")
+                    _mover = _moverZ;
+                return;
+            }
+
+            _moverX = new Mover(_controller.AxisModelX, _controller.Connect);
+            _moverY = new Mover(_controller.AxisModelY, _controller.Connect);
+            _moverZ = new Mover(_controller.AxisModelZ, _controller.Connect);
+            _mover = _moverX;
+
+            _mover.TimerEnabled += SetTime;
+            _mover.TimerItntervaled += SetInterval;
+
+        }
+
+        private void ContinousModeHomeButton_Click(object sender, EventArgs e)
+        {
+            CheckAxisContinousMode();
+            if (_mover != null)
+            {
+                _mover.MoveToHome();
+                CheckAxisPosition(_mover);
+            }
+
+        }
+
+        private void ContinousModeRadioButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (_mover != null)
+            {
+                switch (e.KeyCode.ToString())
+                {
+                    case "NumPad6":
+                        _mover = new Mover(_controller.AxisModelX, _controller.Connect);
+                        _mover.SetToPoint(_mover.TravelRange);
+                        CheckAxisPosition(_mover);
+                        break;
+                    case "NumPad4":
+                        _mover = new Mover(_controller.AxisModelX, _controller.Connect);
+                        _mover.SetToPoint(-(_mover.TravelRange));
+                        CheckAxisPosition(_mover);
+                        break;
+                    case "NumPad8":
+                        _mover = new Mover(_controller.AxisModelY, _controller.Connect);
+                        _mover.SetToPoint(_mover.TravelRange);
+                        CheckAxisPosition(_mover);
+                        break;
+                    case "NumPad2":
+                        _mover = new Mover(_controller.AxisModelY, _controller.Connect);
+                        _mover.SetToPoint(-(_mover.TravelRange));
+                        CheckAxisPosition(_mover);
+                        break;
+                    case "NumPad9":
+                        _mover = new Mover(_controller.AxisModelZ, _controller.Connect);
+                        _mover.SetToPoint(_mover.TravelRange);
+                        CheckAxisPosition(_mover);
+                        break;
+                    case "NumPad3":
+                        _mover = new Mover(_controller.AxisModelZ, _controller.Connect);
+                        _mover.SetToPoint(-(_mover.TravelRange));
+                        CheckAxisPosition(_mover);
+                        break;
+                }
+                e.Handled = true;
+            }
+            e.Handled = true;
+        }
+
+        private void ContinousModeRadioButton_KeyUp(object sender, KeyEventArgs e)
+        {
+            _mover.StopMove();
+            e.Handled = true;
+        }
+
+        private void X_forvardButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            //int keyCode = e.KeyValue;
+            //if () 
+            //{
+            //    e.Handled = true;
+            //}
+        }
+
+        private void X_forvardButton_KeyUp(object sender, KeyEventArgs e)
+        {
+            //char number = e.KeyChar;
+            //if () 
+            //{
+            //    e.Handled = true;
+            //}
+        }
+
+
+
+
+        #endregion
+
+
 
         private void MainFormFull_FormClosed(object sender, FormClosedEventArgs e)
         {
