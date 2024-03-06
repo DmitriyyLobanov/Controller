@@ -644,28 +644,81 @@ namespace ChinaTest.GUI_Forms
             _mover.StopMove();
             e.Handled = true;
         }
-
-        private void X_forvardButton_KeyDown(object sender, KeyEventArgs e)
+        private void Y_forvardButton_MouseDown(object sender, MouseEventArgs e)
         {
-            //int keyCode = e.KeyValue;
-            //if () 
-            //{
-            //    e.Handled = true;
-            //}
+            _mover = new Mover(_controller.AxisModelY, _controller.Connect);
+            _mover.SetToPoint(_mover.TravelRange);
+            CheckAxisPosition(_mover);
+
         }
 
-        private void X_forvardButton_KeyUp(object sender, KeyEventArgs e)
+        private void Y_forvardButton_MouseUp(object sender, MouseEventArgs e)
         {
-            //char number = e.KeyChar;
-            //if () 
-            //{
-            //    e.Handled = true;
-            //}
+            _mover.StopMove();
+            ContinousModeRadioButton.Focus();
+        }
+        private void Y_backvardButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            _mover = new Mover(_controller.AxisModelY, _controller.Connect);
+            _mover.SetToPoint(-(_mover.TravelRange));
+            CheckAxisPosition(_mover);
         }
 
+        private void Y_backvardButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            _mover.StopMove();
+            ContinousModeRadioButton.Focus();
+        }
+        private void X_forvardButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            _mover = new Mover(_controller.AxisModelX, _controller.Connect);
+            _mover.SetToPoint(_mover.TravelRange);
+            CheckAxisPosition(_mover);
+        }
 
+        private void X_forvardButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            _mover.StopMove();
+            ContinousModeRadioButton.Focus();
+        }
 
+        private void X_backvardButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            _mover = new Mover(_controller.AxisModelX, _controller.Connect);
+            _mover.SetToPoint(-(_mover.TravelRange));
+            CheckAxisPosition(_mover);
+        }
 
+        private void X_backvardButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            _mover.StopMove();
+            ContinousModeRadioButton.Focus();
+        }
+        private void Z_forvardButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            _mover = new Mover(_controller.AxisModelZ, _controller.Connect);
+            _mover.SetToPoint(_mover.TravelRange);
+            CheckAxisPosition(_mover);
+        }
+
+        private void Z_forvardButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            _mover.StopMove();
+            ContinousModeRadioButton.Focus();
+        }
+
+        private void Z_backvardButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            _mover = new Mover(_controller.AxisModelZ, _controller.Connect);
+            _mover.SetToPoint(-(_mover.TravelRange));
+            CheckAxisPosition(_mover);
+        }
+
+        private void Z_backvardButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            _mover.StopMove();
+            ContinousModeRadioButton.Focus();
+        }
         #endregion
 
 
@@ -674,6 +727,8 @@ namespace ChinaTest.GUI_Forms
         {
             Environment.Exit(0);
         }
+
+
     }
 
 }

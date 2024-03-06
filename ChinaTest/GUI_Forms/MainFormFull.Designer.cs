@@ -429,6 +429,8 @@
             Z_backvardButton.TabIndex = 22;
             Z_backvardButton.Text = "Z-";
             Z_backvardButton.UseVisualStyleBackColor = true;
+            Z_backvardButton.MouseDown += Z_backvardButton_MouseDown;
+            Z_backvardButton.MouseUp += Z_backvardButton_MouseUp;
             // 
             // Z_forvardButton
             // 
@@ -439,6 +441,8 @@
             Z_forvardButton.TabIndex = 21;
             Z_forvardButton.Text = "Z+";
             Z_forvardButton.UseVisualStyleBackColor = true;
+            Z_forvardButton.MouseDown += Z_forvardButton_MouseDown;
+            Z_forvardButton.MouseUp += Z_forvardButton_MouseUp;
             // 
             // X_forvardButton
             // 
@@ -449,8 +453,8 @@
             X_forvardButton.TabIndex = 20;
             X_forvardButton.Text = "X+";
             X_forvardButton.UseVisualStyleBackColor = true;
-            X_forvardButton.KeyDown += X_forvardButton_KeyDown;
-            X_forvardButton.KeyUp += X_forvardButton_KeyUp;
+            X_forvardButton.MouseDown += X_forvardButton_MouseDown;
+            X_forvardButton.MouseUp += X_forvardButton_MouseUp;
             // 
             // X_backvardButton
             // 
@@ -461,6 +465,8 @@
             X_backvardButton.TabIndex = 19;
             X_backvardButton.Text = "X-";
             X_backvardButton.UseVisualStyleBackColor = true;
+            X_backvardButton.MouseDown += X_backvardButton_MouseDown;
+            X_backvardButton.MouseUp += X_backvardButton_MouseUp;
             // 
             // Y_backvardButton
             // 
@@ -471,6 +477,8 @@
             Y_backvardButton.TabIndex = 18;
             Y_backvardButton.Text = "Y-";
             Y_backvardButton.UseVisualStyleBackColor = true;
+            Y_backvardButton.MouseDown += Y_backvardButton_MouseDown;
+            Y_backvardButton.MouseUp += Y_backvardButton_MouseUp;
             // 
             // Y_forvardButton
             // 
@@ -481,6 +489,8 @@
             Y_forvardButton.TabIndex = 17;
             Y_forvardButton.Text = "Y+";
             Y_forvardButton.UseVisualStyleBackColor = true;
+            Y_forvardButton.MouseDown += Y_forvardButton_MouseDown;
+            Y_forvardButton.MouseUp += Y_forvardButton_MouseUp;
             // 
             // CancelZeroButton
             // 
@@ -819,7 +829,7 @@
             Controls.Add(SelectCOMTextBox);
             Controls.Add(SelectCOMLabel);
             Name = "MainFormFull";
-            Text = "Главное окно";
+            Text = "3_AxisControl";
             FormClosed += MainFormFull_FormClosed;
             StagesParametersPanel.ResumeLayout(false);
             StagesParametersPanel.PerformLayout();
