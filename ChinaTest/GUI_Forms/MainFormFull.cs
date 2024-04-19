@@ -168,6 +168,8 @@ namespace ChinaTest.GUI_Forms
             if (_controller.Connect._isConnect)
             {
                 MoveModesPanel.Enabled = true;
+                SelectCOMTextBox.Enabled = false;
+                SelectCOMButton.Enabled = false;
             }
         }
 
@@ -197,7 +199,6 @@ namespace ChinaTest.GUI_Forms
         private void SaveParametersButton_Click(object sender, EventArgs e)
         {
             //TODO: проверка на тип подвижки(включение/отключение поля передаточного отношения)
-
             AxisModel axisModel = new AxisModel();
             axisModel.StageType = StageTypeComboBox.SelectedItem.ToString();
             axisModel.RuningUnit = RunningUnitComboBox.SelectedItem.ToString();
@@ -206,6 +207,7 @@ namespace ChinaTest.GUI_Forms
             axisModel.ScrewLead = Double.Parse(ScrewLeadComboBox.SelectedItem.ToString());
             axisModel.TransmissonRatio = Double.Parse(TransmissionRatioComboBox.SelectedItem.ToString());
             axisModel.TravelRange = Double.Parse(TravelRangeComboBox.SelectedItem.ToString());
+
 
             if (Set_X_RadioButton.Checked)
             {
@@ -259,9 +261,28 @@ namespace ChinaTest.GUI_Forms
             }
             if (Set_Z_RadioButton.Checked)
             {
-                //Реализовать выставление None, чтобы не использовать одну из осей
-                throw new NotImplementedException();
-                //CurrentUnitLabel_Z.Text = axisModel.RuningUnit.ToString();
+                if (File.Exists(PathZ))
+                {
+                    DialogResult dialogResult = MessageBox.Show(
+                        "Парметры оси Z уже заданы ранее, хотите перезаписать их?",
+                        "Внимание!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.DefaultDesktopOnly);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        axisModel.Name = "Z";
+                        _fileIOService.SaveData(axisModel, PathZ);
+                        CurrentUnitLabel_Z.Text = axisModel.RuningUnit.ToString();
+                    }
+                }
+                else
+                {
+                    axisModel.Name = "Z";
+                    _fileIOService.SaveData(axisModel, PathZ);
+                    CurrentUnitLabel_Z.Text = axisModel.RuningUnit.ToString();
+                }
             }
         }
 
@@ -422,6 +443,10 @@ namespace ChinaTest.GUI_Forms
         }
         private void RunTargetModeButton_Click(object sender, EventArgs e)
         {
+            if (TargetModeTextBox.Text == "")
+            {
+                return;
+            }
             if ((Double.Parse(TargetModeTextBox.Text) + _mover.GetPoint()) >= _mover.TravelRange)
             {
                 MessageBox.Show("Превышено значение диапазона перемещения!");
@@ -437,6 +462,7 @@ namespace ChinaTest.GUI_Forms
             if (_mover != null)
             {
                 _mover.StopMove();
+                
 
                 CheckAxisPosition(_mover);
             }
@@ -474,6 +500,10 @@ namespace ChinaTest.GUI_Forms
 
         private void RunIncrementModeButton_Click(object sender, EventArgs e)
         {
+            if (IncrementModeTextBox.Text == "")
+            {
+                return;
+            }
             CheckAxisIncrementMode();
             double currentCoord = 0;
             double stepValue = Double.Parse(IncrementModeTextBox.Text);
