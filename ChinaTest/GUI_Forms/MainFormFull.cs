@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -83,11 +84,12 @@ namespace ChinaTest.GUI_Forms
 
             DeserializeExistAxes();
             FirstInitialSet_X_Radiobutton();
+            TargetModeRadioButton.Checked = true;
 
         }
 
 
-        #region [СOM connect ans set parameters region]
+        #region [СOM connect and set parameters region]
         private void DeserializeExistAxes()
         {
             string _deserializedAxes = "";
@@ -333,7 +335,18 @@ namespace ChinaTest.GUI_Forms
             {
                 SetSpeedTextBox.Text = _defaultSpeed.ToString();
             }
-
+            if (TargetModeRadioButton.Checked)
+            {
+                TargetModeRadioButton.Focus();
+            }
+            if (IncrementModeRadioButton.Checked)
+            {
+                IncrementModeRadioButton.Focus();
+            }
+            if (ContinousModeRadioButton.Checked)
+            {
+                ContinousModeRadioButton.Focus();
+            }
         }
         #endregion
 
@@ -436,7 +449,7 @@ namespace ChinaTest.GUI_Forms
         {
             CheckAxisTargetMode();
             char number = e.KeyChar;
-            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 44 && number != 46) //цифры, клавиша BackSpace. точка и запятая ASCII
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8  && number != 46) //цифры, клавиша BackSpace. точка ASCII
             {
                 e.Handled = true;
             }
@@ -462,7 +475,7 @@ namespace ChinaTest.GUI_Forms
             if (_mover != null)
             {
                 _mover.StopMove();
-                
+
 
                 CheckAxisPosition(_mover);
             }
@@ -492,7 +505,7 @@ namespace ChinaTest.GUI_Forms
         {
             CheckAxisIncrementMode();
             char number = e.KeyChar;
-            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 44 && number != 46) //цифры, клавиша BackSpace. точка и запятая ASCII
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && number != 46) //цифры, клавиша BackSpace. точка ASCII
             {
                 e.Handled = true;
             }
