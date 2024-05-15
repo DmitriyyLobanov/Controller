@@ -99,7 +99,6 @@ namespace ChinaTest
 
             IsRead = false;
             _isStopCommand = false;
-
             while (Math.Abs(Environment.TickCount - start) < milliSecond)
             {
                 if (IsRead == true)
@@ -109,7 +108,9 @@ namespace ChinaTest
                 }
 
                 if (_isStopCommand == true)
+                {
                     return;
+                }
 
                 Application.DoEvents();
             }

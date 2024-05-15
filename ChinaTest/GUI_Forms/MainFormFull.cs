@@ -38,6 +38,7 @@ namespace ChinaTest.GUI_Forms
         private Mover _moverY;
         private Mover _moverZ;
         private double _point;
+        private bool _keyHeld;
 
         private List<AxisModel> usableAxis;
 
@@ -57,6 +58,8 @@ namespace ChinaTest.GUI_Forms
 
             _mover.TimerEnabled += SetTime;
             _mover.TimerItntervaled += SetInterval;
+
+            this._keyHeld = false;
         }
 
 
@@ -647,34 +650,58 @@ namespace ChinaTest.GUI_Forms
                 switch (e.KeyCode.ToString())
                 {
                     case "NumPad6":
-                        _mover = new Mover(_controller.AxisModelX, _controller.Connect);
-                        _mover.SetToPoint(_mover.TravelRange);
-                        CheckAxisPosition(_mover);
+                        if (!_keyHeld)
+                        {
+                            _keyHeld = true;
+                            _mover = new Mover(_controller.AxisModelX, _controller.Connect);
+                            _mover.SetToPoint(_mover.TravelRange);
+                            CheckAxisPosition(_mover);
+                        }
                         break;
                     case "NumPad4":
-                        _mover = new Mover(_controller.AxisModelX, _controller.Connect);
-                        _mover.SetToPoint(-(_mover.TravelRange));
-                        CheckAxisPosition(_mover);
+                        if (!_keyHeld)
+                        {
+                            _keyHeld = true;
+                            _mover = new Mover(_controller.AxisModelX, _controller.Connect);
+                            _mover.SetToPoint(-(_mover.TravelRange));
+                            CheckAxisPosition(_mover);
+                        }
                         break;
                     case "NumPad8":
-                        _mover = new Mover(_controller.AxisModelY, _controller.Connect);
-                        _mover.SetToPoint(_mover.TravelRange);
-                        CheckAxisPosition(_mover);
+                        if (!_keyHeld)
+                        {
+                            _keyHeld = true;
+                            _mover = new Mover(_controller.AxisModelY, _controller.Connect);
+                            _mover.SetToPoint(_mover.TravelRange);
+                            CheckAxisPosition(_mover);
+                        }
                         break;
                     case "NumPad2":
-                        _mover = new Mover(_controller.AxisModelY, _controller.Connect);
-                        _mover.SetToPoint(-(_mover.TravelRange));
-                        CheckAxisPosition(_mover);
+                        if (!_keyHeld)
+                        {
+                            _keyHeld = true;
+                            _mover = new Mover(_controller.AxisModelY, _controller.Connect);
+                            _mover.SetToPoint(-(_mover.TravelRange));
+                            CheckAxisPosition(_mover);
+                        }
                         break;
                     case "NumPad9":
-                        _mover = new Mover(_controller.AxisModelZ, _controller.Connect);
-                        _mover.SetToPoint(_mover.TravelRange);
-                        CheckAxisPosition(_mover);
+                        if (!_keyHeld)
+                        {
+                            _keyHeld = true;
+                            _mover = new Mover(_controller.AxisModelZ, _controller.Connect);
+                            _mover.SetToPoint(_mover.TravelRange);
+                            CheckAxisPosition(_mover);
+                        }
                         break;
                     case "NumPad3":
-                        _mover = new Mover(_controller.AxisModelZ, _controller.Connect);
-                        _mover.SetToPoint(-(_mover.TravelRange));
-                        CheckAxisPosition(_mover);
+                        if (!_keyHeld)
+                        {
+                            _keyHeld = true;
+                            _mover = new Mover(_controller.AxisModelZ, _controller.Connect);
+                            _mover.SetToPoint(-(_mover.TravelRange));
+                            CheckAxisPosition(_mover);
+                        }
                         break;
                 }
                 e.Handled = true;
@@ -685,6 +712,7 @@ namespace ChinaTest.GUI_Forms
         private void ContinousModeRadioButton_KeyUp(object sender, KeyEventArgs e)
         {
             _mover.StopMove();
+            _keyHeld = false;
             e.Handled = true;
         }
         private void Y_forvardButton_MouseDown(object sender, MouseEventArgs e)
